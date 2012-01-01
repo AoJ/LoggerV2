@@ -9,7 +9,14 @@
       var seed = '{{{{seed}}}}';
       var session = '{{{{session}}}}';
     </script>
-    <script>  
+    
+  </head>
+  <body>
+	<h1>Chat</h1>
+	<input id="text-input" />
+	<input type="button" id="send-button" value="send" />
+    <div id="messages"></div>
+	<script>  
 	
 now.name = prompt("What's your name?", "");  
 now.receive = function(name, message){
@@ -19,11 +26,5 @@ $("#send-button").click(function(){
   now.distribute($("#text-input").val());
 });
 </script>
-  </head>
-  <body>
-	<h1>Chat</h1>
-	<input id="text-input" />
-	<input type="button" id="send-button" value="send" />
-    <div id="messages"></div>
   </body> 
 </html>
