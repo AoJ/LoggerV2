@@ -17,7 +17,7 @@
 	<input type="button" id="send-button" value="send" />
     <div id="messages"></div>
 	<script>  
-	
+	var now = nowInitialize();
 now.name = prompt("What's your name?", "");  
 now.receive = function(name, message){
   $("#messages").append("<br>"+name+": "+message);
