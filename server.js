@@ -7,8 +7,8 @@ var Data = require('data');
 var _ = require('underscore');
 
 // App Config
-global.config = JSON.parse(fs.readFileSync(__dirname+ '/config.json', 'utf-8'));
-global.seed = JSON.parse(fs.readFileSync(__dirname+ '/db/schema.json', 'utf-8'));
+var config = JSON.parse(fs.readFileSync(__dirname+ '/config.json', 'utf-8'));
+var seed = JSON.parse(fs.readFileSync(__dirname+ '/db/schema.json', 'utf-8'));
 
 
 function serveStartpage(req, res) {
@@ -24,9 +24,11 @@ app.configure(function() {
   app.use(express.bodyParser());
   app.use(express.methodOverride());
   app.use(express.cookieParser());
-  app.use(express.session({secret: config['secret']}));
+  app.use(express.session({secret: 'sdfsdfds fds fdsa fsa df'}));
   app.use(app.router);
   app.use(express.static(__dirname+"/public", { maxAge: 41 }));
   app.use(express.logger({ format: ':method :url' }));
 
 });
+
+app.listen(3034);
