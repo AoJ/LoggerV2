@@ -27,42 +27,6 @@ app.configure(function() {
   app.use(express.session({secret: config['secret']}));
   app.use(app.router);
   app.use(express.static(__dirname+"/public", { maxAge: 41 }));
-  app.use(express.static(__dirname+"/../../", { maxAge: 41 }));
   app.use(express.logger({ format: ':method :url' }));
-  
-  app.use(function(req, res) {
-    serveStartpage(req, res);
-  });
+
 });
-
-var graph = new Data.Graph(seed, false);
-var myapp = {};
-
-// Showcasing middleware functionality
-var Filters = {};
-Filters.makeCrazy = function() {
-  return {
-    read: function(node, next, ctx) {
-      node.crazy = true;
-      next(node); // passes through the filtered node
-    },
-
-    write: function(node, next,ctx) {
-      next(node); // no-op
-    }
-  };
-};
-
-// Connect to a data-store
-graph.connect('couch', { 
-  url: config.couchdb_url,
-  filters: [
-    Filters.makeCrazy()
-  ]
-});
-
-// Serve Data.js backend along with an express server
-graph.serve(app);
-
-console.log('READY: Server is listening http://'+config['server_host']+':'+config['server_port']);
-app.listen(config['server_port'], config['server_host']);
