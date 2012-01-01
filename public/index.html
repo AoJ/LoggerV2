@@ -8,9 +8,9 @@
       var seed = '{{{{seed}}}}';
       var session = '{{{{session}}}}';
     </script>
-    
+    <script src="/javascript/now.js" />
     <script>  
-	<script src="/javascript/now.js" />
+	
 now.name = prompt("What's your name?", "");  
 now.receive = function(name, message){
   $("#messages").append("<br>"+name+": "+message);
