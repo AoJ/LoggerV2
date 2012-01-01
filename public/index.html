@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html> 
+<html> 
+  <head> 
+    <meta http-equiv="content-type" content="text/html;charset=utf-8"> 
+    <title>Tasks — Data.js Demo</title> 
+    
+    <script>
+      var seed = '{{{{seed}}}}';
+      var session = '{{{{session}}}}';
+    </script>
+    
+    <script>  
+now.name = prompt("What's your name?", "");  
+now.receive = function(name, message){
+  $("#messages").append("<br>"+name+": "+message);
+}
+$("#send-button").click(function(){
+  now.distribute($("#text-input").val());
+});
+</script>
+  </head>
+  <body>
+	<input id="text-input" />
+	<input type="send-button" value="send" />
+    <div id="messages"></div>
+  </body> 
+</html>
