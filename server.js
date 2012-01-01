@@ -24,11 +24,11 @@ app.configure(function() {
   app.use(express.bodyParser());
   app.use(express.methodOverride());
   app.use(express.cookieParser());
-  app.use(express.session({secret: 'sdfsdfds fds fdsa fsa df'}));
   app.use(app.router);
   app.use(express.static(__dirname+"/public", { maxAge: 41 }));
   app.use(express.logger({ format: ':method :url' }));
 
 });
 
-app.listen(3034);
+
+app.listen(8276);
