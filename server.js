@@ -3,7 +3,7 @@ var app = express.createServer();
 var http = require('http');
 var fs = require('fs');
 var async = require('async');
-var Data = require('../../data');
+var Data = require('data');
 var _ = require('underscore');
 
 // App Config
