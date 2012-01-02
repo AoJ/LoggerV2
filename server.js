@@ -23,7 +23,7 @@ app.listen(8276);
 app.get('/log', function(req, res){
 	res.writeHead(200);
 	res.end(req.url);
-	everyone.now.pushLog(req.url, 'log');
+	everyone.now.receiveLog(req.url, 'log');
 	everyone.now.receive('admin', req.url);
 });
 
@@ -35,7 +35,4 @@ everyone.now.distribute = function(message){
   everyone.now.receive(this.now.name, message);
 };
 
-everyone.now.pushLog = function(msg, data) {
-	everyone.now.receiveLog(msg, data);
-}
 
