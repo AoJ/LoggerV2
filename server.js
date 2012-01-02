@@ -20,9 +20,15 @@ app.configure(function() {
 
 app.listen(8276);
 
+app.get('/log', function(req, res){
+	res.writeHead(200);
+	res.end(req.url);
+	everyone.now.receive('admin', req.url);
+});
+
 var nowjs = require("now");
 var everyone = nowjs.initialize(app);
-      
+
 everyone.now.distribute = function(message){
   // this.now exposes caller's scope
   everyone.now.receive(this.now.name, message);

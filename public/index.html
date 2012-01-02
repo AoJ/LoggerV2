@@ -17,12 +17,16 @@
 	<input id="text-input" />
 	<input type="button" id="send-button" value="send" />
     <div id="messages"></div>
-	<script>  
+    <div id="test"></div>
+	<script>
 	var now = nowInitialize();
 now.name = prompt("What's your name?", "");  
 now.receive = function(name, message){
   $("#messages").append("<br>"+name+": "+message);
 }
+//now.newData = function(message){
+//  $("#test").append("<br>"+message);
+//}
 $("#send-button").click(function(){
   now.distribute($("#text-input").val());
 });
