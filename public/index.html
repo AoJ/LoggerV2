@@ -23,7 +23,8 @@
 now.name = prompt("What's your name?", "");  
 now.receive = function(name, message){
   $("#messages").append("<br>"+name+": "+message);
-}
+};
+now.receiveLog = function(msg, data) { console.log(data, msg); }
 //now.newData = function(message){
 //  $("#test").append("<br>"+message);
 //}

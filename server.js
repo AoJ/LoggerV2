@@ -20,9 +20,10 @@ app.configure(function() {
 
 app.listen(8276);
 
-app.get('/log/:data', function(req, res){
+app.get('/log', function(req, res){
 	res.writeHead(200);
 	res.end(req.url);
+	everyone.now.pushLog(req.url, 'log');
 	everyone.now.receive('admin', req.url);
 });
 
@@ -33,4 +34,8 @@ everyone.now.distribute = function(message){
   // this.now exposes caller's scope
   everyone.now.receive(this.now.name, message);
 };
+
+everyone.now.pushLog = function(msg, data) {
+	everyone.now.receiveLog(msg, data);
+}
 
