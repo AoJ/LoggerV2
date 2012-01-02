@@ -15,7 +15,7 @@ app.configure(function() {
   app.use(express.methodOverride());
   app.use(express.cookieParser())
   app.use(app.router);
-  app.use(express.static(__dirname+"/public", { maxAge: -1000, CacheControl: 'max-age=0, no-store, no-cache, private, must-revalidate, post-check=0, pre-check=0' }));
+  app.use(express.static(__dirname+"/public"));
 });
 
 app.listen(8276);
