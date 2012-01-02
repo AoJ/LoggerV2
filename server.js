@@ -15,7 +15,7 @@ app.configure(function() {
   app.use(express.methodOverride());
   app.use(express.cookieParser());
   app.use(app.router);
-  app.use(express.static(__dirname+"/public", { maxAge: 41 }));
+  app.use(express.static(__dirname+"/public", { maxAge: 0 }));
 });
 
 app.listen(8276);
@@ -23,7 +23,6 @@ app.listen(8276);
 app.get('/log', function(req, res){
 	res.writeHead(200);
 	res.end(req.url);
-	everyone.now.receiveLog(req.url, 'log');
 	everyone.now.receive('admin', req.url);
 });
 
