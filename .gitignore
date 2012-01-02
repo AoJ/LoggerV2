@@ -1,0 +1,13 @@
+*.sw[nop]
+*~
+~*
+.#*
+[#]*#
+.project
+.pydevproject
+.settings
+.buildpath
+.~lock.*
+.bcup
+.idea
+*.pyc
