@@ -20,7 +20,7 @@ app.configure(function() {
 
 app.listen(8276);
 
-app.get('/log', function(req, res){
+app.get('/log*', function(req, res){
 	res.writeHead(200);
 	res.end(req.url);
 	everyone.now.receive('admin', req.url);
