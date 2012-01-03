@@ -27,10 +27,11 @@ app.get('/log', function(req, res){
 var nowjs = require("now");
 var everyone = nowjs.initialize(app);
 
+everyone.now.receive = function() {};
 everyone.now.distribute = function(message){
-  // this.now exposes caller's scope
   everyone.now.receive(this.now.name, message);
 };
+
 function log(data, msg) {
 	if(!msg) msg = '';
 	everyone.now.receiveLog(msg, data);
