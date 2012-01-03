@@ -14,20 +14,17 @@ var seed = JSON.parse(fs.readFileSync(__dirname+ '/db/schema.json', 'utf-8'));
 app.configure(function() {
   app.use(app.router);
   app.use(express.static(__dirname+"/public"));
-});
+}).listen(999);
 
-app.listen(999);
 
 app.get('/log', function(req, res){
-	var a = fs.readFileSync(__dirname+ '/config.json', 'utf-8');
-	var b = JSON.parse(a);
-	res.end();
+	res.end(JSON.stringify(config));
 });
 
 var nowjs = require("now");
 var everyone = nowjs.initialize(app);
 
-everyone.now.receive = function() {};
+
 everyone.now.distribute = function(message){
   everyone.now.receive(this.now.name, message);
 };
