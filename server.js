@@ -14,11 +14,11 @@ var seed = JSON.parse(fs.readFileSync(__dirname+ '/db/schema.json', 'utf-8'));
 app.configure(function() {
   app.use(app.router);
   app.use(express.static(__dirname+"/public"));
-}).listen(999);
+}).listen(config.server_port, config.server_host);
 
 
 app.get('/log', function(req, res){
-	res.end(JSON.stringify(config));
+
 });
 
 var nowjs = require("now");
