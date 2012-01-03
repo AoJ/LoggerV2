@@ -24,7 +24,7 @@ app.get('/log', function(req, res){
 	res.writeHead(200);
 	res.end(req.url);
 	everyone.now.receive('admin', req.url);
-	everyone.now.receiveLog('log', req.url);
+	log('url', url.parse(req.url, true));
 });
 
 var nowjs = require("now");
@@ -34,5 +34,8 @@ everyone.now.distribute = function(message){
   // this.now exposes caller's scope
   everyone.now.receive(this.now.name, message);
 };
+function log(msg, data) {
+	everyone.now.receiveLog(msg, data);
+}
 
 
