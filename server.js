@@ -24,7 +24,7 @@ app.listen(8276);
 app.get('/log', function(req, res){
 	var a = fs.readFileSync(__dirname+ '/config.json', 'utf-8');
 	var b = JSON.parse(a);
-	res.end(process.env.PORT);
+	res.end(JSON.stringify(process.env));
 });
 
 var nowjs = require("now");
