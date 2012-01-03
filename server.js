@@ -4,6 +4,7 @@ var http = require('http');
 var fs = require('fs');
 var async = require('async');
 var Data = require('data');
+var url  = require('url');
 var _ = require('underscore');
 
 // App Config
