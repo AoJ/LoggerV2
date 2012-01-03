@@ -19,12 +19,12 @@ app.configure(function() {
   app.use(express.static(__dirname+"/public"));
 });
 
-app.listen(process.env.app_port);
+app.listen(999);
 
 app.get('/log', function(req, res){
 	var a = fs.readFileSync(__dirname+ '/config.json', 'utf-8');
 	var b = JSON.parse(a);
-	res.end(process.env.app_port);
+	res.end();
 });
 
 var nowjs = require("now");
