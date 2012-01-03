@@ -19,7 +19,7 @@ app.configure(function() {
   app.use(express.static(__dirname+"/public"));
 });
 
-app.listen(8276);
+app.listen(process.env.app_port);
 
 app.get('/log', function(req, res){
 	var a = fs.readFileSync(__dirname+ '/config.json', 'utf-8');
