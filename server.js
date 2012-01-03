@@ -12,9 +12,6 @@ var config = JSON.parse(fs.readFileSync(__dirname+ '/config.json', 'utf-8'));
 var seed = JSON.parse(fs.readFileSync(__dirname+ '/db/schema.json', 'utf-8'));
 
 app.configure(function() {
-  app.use(express.bodyParser());
-  app.use(express.methodOverride());
-  app.use(express.cookieParser())
   app.use(app.router);
   app.use(express.static(__dirname+"/public"));
 });
