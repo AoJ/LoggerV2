@@ -9,5 +9,5 @@
 .buildpath
 .~lock.*
 .bcup
-.idea/*
+.idea
 *.pyc
