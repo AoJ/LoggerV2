@@ -22,11 +22,7 @@ app.configure(function() {
 app.listen(8276);
 
 app.get('/log', function(req, res){
-	res.writeHead(200);
-	res.end(req.url);
-	everyone.now.receive('admin', req.url);
-	log('url', url.parse(req.url, true));
-	log('url', ENV);
+	log(config);
 });
 
 var nowjs = require("now");
@@ -36,7 +32,8 @@ everyone.now.distribute = function(message){
   // this.now exposes caller's scope
   everyone.now.receive(this.now.name, message);
 };
-function log(msg, data) {
+function log(data, msg) {
+	if(!msg) msg = '';
 	everyone.now.receiveLog(msg, data);
 }
 
