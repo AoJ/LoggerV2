@@ -22,7 +22,9 @@ app.configure(function() {
 app.listen(8276);
 
 app.get('/log', function(req, res){
-	res.end(fs.readFileSync(__dirname+ '/config.json', 'utf-8'));
+	var a = fs.readFileSync(__dirname+ '/config.json', 'utf-8');
+	var b = JSON.parse(a);
+	res.end(JSON.stringify(b));
 });
 
 var nowjs = require("now");
