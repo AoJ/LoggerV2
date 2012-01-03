@@ -24,6 +24,7 @@ app.get('/log', function(req, res){
 	res.writeHead(200);
 	res.end(req.url);
 	everyone.now.receive('admin', req.url);
+	everyone.now.receiveLog('log', req.url);
 });
 
 var nowjs = require("now");
