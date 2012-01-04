@@ -50,6 +50,8 @@ app.get('/__log', function(req, res){
 	  type: "/type/location",
 	  citizens: ["/person/bart"]
 	});
+
+	res.end(JSON.stringify(graph));
 	/*try {
 		var parsedUrl = url.parse(req.url, true);
 		var logData = {
