@@ -43,7 +43,7 @@ everyone.now.distribute = function(message){
 };
 
 function log(data, msg) {
-	if(!msg) msg = '';
+	if(!msg) msg = undefined;
 	everyone.now.receiveLog(msg, data);
 }
 
