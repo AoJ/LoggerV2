@@ -26,6 +26,7 @@ app.get('/__log', function(req, res){
 	try {
 		var parsedUrl = url.parse(req.url, true);
 		parsedUrl.ip = "127.0.0.1";
+		log(parsedUrl);
 		graph.set(parsedUrl);
 		log(JSON.stringify(graph));
 
