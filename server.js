@@ -13,7 +13,7 @@ var schema = JSON.parse(fs.readFileSync(__dirname+ '/db/schema.json', 'utf-8'));
 
 var graph = new Data.Graph(schema, false);
 graph.connect('couch', { url: config.couchdb_url });
-graph.merge(schema,{dirty: true});
+//graph.merge(schema,{dirty: true});
 
 app.configure(function() {
   app.use(app.router);
@@ -23,10 +23,11 @@ app.configure(function() {
 
 app.get('/__log', function(req, res){
 	try {
-		res.end('OK');
+		//res.end('OK');
 		var parsedUrl = url.parse(req.url, true);
 		parsedUrl.ip = "127.0.0.1";
 		graph.set(parsedUrl);
+		res.end(JSON.stringify(graph));
 
 		//everyone.now.__log(logData);
 		graph.sync(function(err) { log(parsedUrl, err ? 'FAIL' : 'SAVED') });
