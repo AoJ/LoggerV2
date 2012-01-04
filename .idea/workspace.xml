@@ -36,7 +36,7 @@
       <file leaf-file-name="schema.json" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/db/schema.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="20" selection-start="60" selection-end="60" vertical-scroll-proportion="0.0659824">
+            <state line="109" column="22" selection-start="1763" selection-end="1763" vertical-scroll-proportion="2.3973608">
               <folding />
             </state>
           </provider>
@@ -372,7 +372,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/db/schema.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="20" selection-start="60" selection-end="60" vertical-scroll-proportion="0.0659824">
+        <state line="109" column="22" selection-start="1763" selection-end="1763" vertical-scroll-proportion="2.3973608">
           <folding />
         </state>
       </provider>
