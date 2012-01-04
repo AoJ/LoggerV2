@@ -51,9 +51,9 @@ app.get('/__log', function(req, res){
 	  citizens: ["/person/bart"]
 	});
 
-	graph.connect('couch', { url: 'http://localhost:5984/simpsons' });
+	graph.connect('couch', { url: "http://hegenbart:aXJT5zLcGZ@81.169.133.153:5984/logger" });
 	graph.merge(schema,{dirty: true});
-	graph.sync(function(err) { res.end(JSON.stringify(err)); if (!err) res.write('Successfully synced'); });
+	graph.sync(function(err) { res.write(JSON.stringify(err)); if (!err) res.write('Successfully synced'); });
 	res.end(JSON.stringify(graph));
 	/*try {
 		var parsedUrl = url.parse(req.url, true);
