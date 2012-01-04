@@ -18,6 +18,7 @@ app.configure(function() {
 
 
 app.get('/__log', function(req, res){
+	log(schema);
 	var graph = new Data.Graph(schema);
 	graph.connect('couch', { url: config.couchdb_url });
 	graph.merge(schema, {dirty: true});
