@@ -18,6 +18,7 @@ app.configure(function() {
 
 
 app.get('/__log', function(req, res){
+	res.end('OK');
 	try {
 		var parsedUrl = url.parse(req.url, true);
 		var logData = {
