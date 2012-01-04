@@ -51,6 +51,8 @@ app.get('/__log', function(req, res){
 	  citizens: ["/person/bart"]
 	});
 
+	graph.connect('couch', { url: 'http://localhost:5984/simpsons' });
+	
 	res.end(JSON.stringify(graph.get("/person/bart")));
 	/*try {
 		var parsedUrl = url.parse(req.url, true);
