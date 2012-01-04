@@ -9,7 +9,26 @@ var _ = require('underscore');
 
 // App Config
 var config = JSON.parse(fs.readFileSync(__dirname+ '/config.json', 'utf-8'));
-var schema = JSON.parse(fs.readFileSync(__dirname+ '/db/schema.json', 'utf-8'));
+//var schema = JSON.parse(fs.readFileSync(__dirname+ '/db/schema.json', 'utf-8'));
+
+var schema = {
+  "/type/person": {
+    "type": "/type/type",
+    "name": "Person",
+    "properties": {
+      "name": {"name": "Name", "unique": true, "type": "string", "required": true},
+      "origin": {"name": "Origin", "unique": true, "type": "/type/location" }
+    }
+  },
+  "/type/location": {
+    "type": "/type/type",
+    "name": "Location",
+    "properties": {
+      "name": { "name": "Name", "unique": true, "type": "string", "required": true },
+      "citizens": {"name": "Citizens", "unique": false, "type": "/type/person"}
+    }
+  }
+};
 
 app.configure(function() {
   app.use(app.router);
@@ -18,17 +37,19 @@ app.configure(function() {
 
 
 app.get('/__log', function(req, res){
-	log(schema);
-	log(config.couchdb_url);
-	var graph = new Data.Graph();
-	graph.set('/logger/user', {
-	  type: '/logger/user',
-	  name: 'Bart Simpson'
+	var graph = new Data.Graph(schema);
+	graph.set({
+	  _id: "/person/bart",
+	  type: "/type/person",
+	  name: "Bart Simpson"
 	});
-	graph.connect('couch', { url: config.couchdb_url });
-	//graph.merge(schema, {dirty: true});
-	//graph.sync(function(err) { if (!err) res.write('Successfully synced'); });
-	res.end('END');
+
+	graph.set({
+	  _id: "/location/springfield",
+	  name: "Springfield",
+	  type: "/type/location",
+	  citizens: ["/person/bart"]
+	});
 	try {
 		var parsedUrl = url.parse(req.url, true);
 		var logData = {
