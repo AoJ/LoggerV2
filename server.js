@@ -17,8 +17,20 @@ app.configure(function() {
 }).listen(config.server_port, config.server_host);
 
 
-app.get('/log', function(req, res){
+app.get('/__log', function(req, res){
+	try {
+		var parsedUrl = url.parse(req.url, true);
+		var logData = {
+			type: "log",
+			app: "",
+			message: parsedUrl.query.message,
+			data: parsedUrl.query.data || {}
+		};
+		//everyone.now.__log(logData);
+		log(logData);
 
+	} catch(err) {
+	}
 });
 
 var nowjs = require("now");
