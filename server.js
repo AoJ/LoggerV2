@@ -22,11 +22,11 @@ app.get('/__log', function(req, res){
 	var graph = new Data.Graph(schema, false);
 	graph.set({
 	  type: "/logger/user",
-	  name: "Bart Simpson"
+	  name: "Lisa Simpson"
 	});
 
 
-	graph.connect('couch', { url: "http://hegenbart:aXJT5zLcGZ@81.169.133.153:5984/logger" });
+	graph.connect('couch', { url: config.couchdb_url });
 	graph.merge(schema,{dirty: true});
 	graph.sync(function(err) { res.write(JSON.stringify(err)); if (!err) res.write('Successfully synced'); });
 	res.end(JSON.stringify(graph));
