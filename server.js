@@ -27,7 +27,7 @@ app.get('/__log', function(req, res){
 	});
 	graph.connect('couch', { url: config.couchdb_url });
 	//graph.merge(schema, {dirty: true});
-	graph.sync(function(err) { if (!err) res.write('Successfully synced'); });
+	//graph.sync(function(err) { if (!err) res.write('Successfully synced'); });
 	res.end('END');
 	try {
 		var parsedUrl = url.parse(req.url, true);
