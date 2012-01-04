@@ -1,51 +1,123 @@
-{ 
-  "/type/project": {
-    "_id": "/type/project",
-    "type": "/type/type",
-    "name": "Project",
-    "properties": {
-      "name": {
-        "name": "Name",
-        "unique": true,
-        "type": "string",
-        "required": true
-      },
-      "tasks": {
-        "name": "Tasks",
-        "unique": false,
-        "sync": true,
-        "type": ["/type/task"]
-      }
-    },
-    "indexes": {
-      "key": ["creator", "name"],
-      "creator": ["creator"]
-    }
-  },
-  
-  "/type/task": {
-    "_id": "/type/task",
-    "type": "/type/type",
-    "name": "Task",
-    "properties": {
-      "name": {
-        "name": "Task Name",
-        "unique": true,
-        "type": "string"
-      },
-      "complete": {
-        "name": "Complete",
-        "unique": true,
-        "type": "boolean"
-      },
-      "project": {
-        "name": "Project Membership",
-        "unique": true,
-        "type": "/type/project"
-      }
-    },
-    "indexes": {
-      "project": ["project"]
-    }
-  }
+{
+	"/logger/print":{
+		"_id":"/logger/print",
+		"type":"/logger/print",
+		"name":"Print",
+		"properties":{
+
+			"time":{
+				"name":"Time",
+				"unique":false,
+				"type":"string",
+				"required":true
+			},
+			"user":{
+				"name":"User",
+				"unique":false,
+				"required":true,
+				"type":["/logger/user"]
+			},
+			"project":{
+				"name":"Project",
+				"unique":false,
+				"type":"string",
+				"required":false
+			},
+			"ip":{
+				"name":"IP",
+				"unique":false,
+				"type":"string",
+				"required":true
+			},
+			"message":{
+				"name":"Message",
+				"unique":false,
+				"type":"string",
+				"required":true
+			},
+			"data":{
+				"name":"Data",
+				"unique":false,
+				"type":"object",
+				"required":false
+			},
+			"more": {
+				"name":"More",
+				"unique":false,
+				"type":"object",
+				"required":false
+			}
+		},
+		"indexes":{
+			"key":["time", "user", "project"],
+			"time": ["time"],
+			"user": ["user"],
+			"project": ["project"]
+		}
+	},
+
+	"/logger/access":{
+		"_id":"/logger/access",
+		"type":"/logger/access",
+		"name":"access",
+		"properties":{
+
+			"time":{
+				"name":"Time",
+				"unique":false,
+				"type":"string",
+				"required":true
+			},
+			"project":{
+				"name":"Project",
+				"unique":false,
+				"type":"string",
+				"required":false
+			},
+			"ip":{
+				"name":"IP",
+				"unique":false,
+				"type":"string",
+				"required":true
+			},
+			"url": {
+				"name":"Url",
+				"unique":false,
+				"type":"string",
+				"required":true
+			},
+			"message":{
+				"name":"Message",
+				"unique":false,
+				"type":"string",
+				"required":true
+			},
+			"headers":{
+				"name":"Headers",
+				"unique":false,
+				"type":"object",
+				"required":false
+			}
+		},
+		"indexes":{
+			"time": ["time"],
+			"url": ["url"]
+		}
+	},
+
+	"/logger/user":{
+		"_id":"/logger/user",
+		"type":"/logger/user",
+		"name":"User",
+		"properties":{
+			"name":{
+				"name":"User name",
+				"unique":true,
+				"type":"string"
+			}
+		},
+		"indexes":{
+			"user":["user"]
+		}
+	}
 }

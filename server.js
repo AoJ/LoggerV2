@@ -9,7 +9,7 @@ var _ = require('underscore');
 
 // App Config
 var config = JSON.parse(fs.readFileSync(__dirname+ '/config.json', 'utf-8'));
-var seed = JSON.parse(fs.readFileSync(__dirname+ '/db/schema.json', 'utf-8'));
+var schema = JSON.parse(fs.readFileSync(__dirname+ '/db/schema.json', 'utf-8'));
 
 app.configure(function() {
   app.use(app.router);
@@ -18,7 +18,11 @@ app.configure(function() {
 
 
 app.get('/__log', function(req, res){
-	res.end('OK');
+	var graph = new Data.Graph(schema);
+	graph.connect('couch', { url: config.couchdb_url });
+	graph.merge(schema, {dirty: true});
+	graph.sync(function(err) { if (!err) res.write('Successfully synced'); });
+	res.end('END');
 	try {
 		var parsedUrl = url.parse(req.url, true);
 		var logData = {
@@ -46,5 +50,7 @@ function log(data, msg) {
 	if(!msg) msg = undefined;
 	everyone.now.receiveLog(msg, data);
 }
+
+
 
 

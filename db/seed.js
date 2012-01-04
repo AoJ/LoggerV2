@@ -1,6 +1,6 @@
 var fs = require('fs');
 var assert = require('assert');
-var Data = require('../../../data');
+var Data = require('data');
 var crypto = require('crypto');
 var _ = require('underscore');
 
