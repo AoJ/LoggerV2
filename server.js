@@ -19,6 +19,7 @@ app.configure(function() {
 
 app.get('/__log', function(req, res){
 	log(schema);
+	log(config.couchdb_url);
 	//var graph = new Data.Graph(schema);
 	graph.set('/logger/user', {
 	  type: '/logger/user',
