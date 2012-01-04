@@ -37,7 +37,7 @@ app.configure(function() {
 
 
 app.get('/__log', function(req, res){
-	var graph = new Data.Graph(schema);
+	var graph = new Data.Graph(schema, false);
 	graph.set({
 	  _id: "/person/bart",
 	  type: "/type/person",
@@ -50,7 +50,7 @@ app.get('/__log', function(req, res){
 	  type: "/type/location",
 	  citizens: ["/person/bart"]
 	});
-	try {
+	/*try {
 		var parsedUrl = url.parse(req.url, true);
 		var logData = {
 			type: "log",
@@ -62,7 +62,7 @@ app.get('/__log', function(req, res){
 		log(logData);
 
 	} catch(err) {
-	}
+	}*/
 });
 
 var nowjs = require("now");
