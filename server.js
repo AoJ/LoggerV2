@@ -54,7 +54,7 @@ app.get('/__log', function(req, res){
 	graph.connect('couch', { url: 'http://localhost:5984/simpsons' });
 	graph.merge(schema,{dirty: true});
 	graph.sync(function(err) { res.end(JSON.stringify(err)); if (!err) res.write('Successfully synced'); });
-	res.end(JSON.stringify(graph.get("/person/bart")));
+	res.end(JSON.stringify(graph));
 	/*try {
 		var parsedUrl = url.parse(req.url, true);
 		var logData = {
