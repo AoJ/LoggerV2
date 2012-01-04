@@ -1,7 +1,7 @@
 {
 	"/logger/print":{
 		"_id":"/logger/print",
-		"type":"/logger/print",
+		"type":"type",
 		"name":"Print",
 		"properties":{
 
@@ -58,7 +58,7 @@
 
 	"/logger/access":{
 		"_id":"/logger/access",
-		"type":"/logger/access",
+		"type":"type",
 		"name":"access",
 		"properties":{
 
@@ -107,7 +107,7 @@
 
 	"/logger/user":{
 		"_id":"/logger/user",
-		"type":"/logger/user",
+		"type":"type",
 		"name":"User",
 		"properties":{
 			"name":{
