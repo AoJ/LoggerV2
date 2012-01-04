@@ -20,7 +20,7 @@ app.configure(function() {
 app.get('/__log', function(req, res){
 	log(schema);
 	log(config.couchdb_url);
-	//var graph = new Data.Graph(schema);
+	var graph = new Data.Graph();
 	graph.set('/logger/user', {
 	  type: '/logger/user',
 	  name: 'Bart Simpson'
