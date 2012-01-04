@@ -11,6 +11,9 @@ var _ = require('underscore');
 var config = JSON.parse(fs.readFileSync(__dirname+ '/config.json', 'utf-8'));
 var schema = JSON.parse(fs.readFileSync(__dirname+ '/db/schema.json', 'utf-8'));
 
+var graph = new Data.Graph(schema, false);
+graph.connect('couch', { url: config.couchdb_url });
+graph.merge(schema,{dirty: true});
 
 app.configure(function() {
   app.use(app.router);
@@ -19,30 +22,30 @@ app.configure(function() {
 
 
 app.get('/__log', function(req, res){
-	var graph = new Data.Graph(schema, false);
+	try {
+
 	graph.set({
 	  type: "/logger/user",
 	  name: "Lisa Simpson"
 	});
 
 
-	graph.connect('couch', { url: config.couchdb_url });
-	graph.merge(schema,{dirty: true});
-	graph.sync(function(err) { res.write(JSON.stringify(err)); if (!err) res.write('Successfully synced'); });
-	res.end(JSON.stringify(graph));
-	/*try {
+
+
+
+
+
 		var parsedUrl = url.parse(req.url, true);
-		var logData = {
-			type: "log",
-			app: "",
-			message: parsedUrl.query.message,
-			data: parsedUrl.query.data || {}
-		};
+		parsedUrl.ip = "127.0.0.1";
+		graph.set(parsedUrl);
+
 		//everyone.now.__log(logData);
-		log(logData);
+		graph.sync(function(err) { res.end(err ? 'FAIL' : 'SAVED') });
+		res.end('OK');
+		log(parsedUrl);
 
 	} catch(err) {
-	}*/
+	}
 });
 
 var nowjs = require("now");

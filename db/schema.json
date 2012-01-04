@@ -9,12 +9,12 @@
 				"name":"Time",
 				"unique":false,
 				"type":"string",
-				"required":true
+				"required":false
 			},
 			"user":{
 				"name":"User",
 				"unique":false,
-				"required":true,
+				"required":false,
 				"type":["/logger/user"]
 			},
 			"project":{
