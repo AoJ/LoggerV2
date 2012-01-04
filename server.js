@@ -23,26 +23,13 @@ app.configure(function() {
 
 app.get('/__log', function(req, res){
 	try {
-
-	graph.set({
-	  type: "/logger/user",
-	  name: "Lisa Simpson"
-	});
-
-
-
-
-
-
-
+		res.end('OK');
 		var parsedUrl = url.parse(req.url, true);
 		parsedUrl.ip = "127.0.0.1";
 		graph.set(parsedUrl);
 
 		//everyone.now.__log(logData);
-		graph.sync(function(err) { res.end(err ? 'FAIL' : 'SAVED') });
-		res.end('OK');
-		log(parsedUrl);
+		graph.sync(function(err) { log(parsedUrl, err ? 'FAIL' : 'SAVED') });
 
 	} catch(err) {
 	}
