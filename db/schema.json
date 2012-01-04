@@ -1,7 +1,7 @@
 {
-	"/type/print":{
-		"_id":"/type/print",
-		"type":"/type/type",
+	"/logger/print":{
+		"_id":"/logger/print",
+		"type":"type",
 		"name":"Print",
 		"properties":{
 
@@ -15,7 +15,7 @@
 				"name":"User",
 				"unique":false,
 				"required":true,
-				"type":["/type/user"]
+				"type":["/logger/user"]
 			},
 			"project":{
 				"name":"Project",
@@ -56,9 +56,9 @@
 		}
 	},
 
-	"/type/access":{
-		"_id":"/type/access",
-		"type":"/type/type",
+	"/logger/access":{
+		"_id":"/logger/access",
+		"type":"type",
 		"name":"access",
 		"properties":{
 
@@ -105,9 +105,9 @@
 		}
 	},
 
-	"/type/user":{
-		"_id":"/type/user",
-		"type":"/type/type",
+	"/logger/user":{
+		"_id":"/logger/user",
+		"type":"type",
 		"name":"User",
 		"properties":{
 			"name":{
