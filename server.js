@@ -22,17 +22,18 @@ app.configure(function() {
 
 
 app.get('/__log', function(req, res){
+	res.end('OK');
 	try {
-		//res.end('OK');
 		var parsedUrl = url.parse(req.url, true);
 		parsedUrl.ip = "127.0.0.1";
 		graph.set(parsedUrl);
-		res.end(JSON.stringify(graph));
+		log(JSON.stringify(graph));
 
 		//everyone.now.__log(logData);
 		graph.sync(function(err) { log(parsedUrl, err ? 'FAIL' : 'SAVED') });
 
 	} catch(err) {
+		log(err);
 	}
 });
 
