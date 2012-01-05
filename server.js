@@ -24,10 +24,11 @@ app.configure(function() {
 app.get('/__log', function(req, res){
 	res.end('OK');
 	try {
-		var parsedUrl = url.parse(req.url, true);
+		var parsedUrl = (url.parse(req.url, true)).query;
 		parsedUrl.ip = "127.0.0.1";
 		log(parsedUrl);
-		graph.set(parsedUrl);
+		var l = graph.set(parsedUrl);
+		log(l.errors);
 		log(JSON.stringify(graph));
 
 		//everyone.now.__log(logData);
