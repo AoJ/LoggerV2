@@ -13,7 +13,7 @@ var schema = JSON.parse(fs.readFileSync(__dirname+ '/db/schema.json', 'utf-8'));
 
 var graph = new Data.Graph(schema);
 graph.connect('couch', { url: config.couchdb_url });
-graph.merge(schema,{dirty: true});
+//graph.merge(schema,{dirty: true});
 
 app.configure(function() {
   app.use(app.router);
