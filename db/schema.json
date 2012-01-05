@@ -38,7 +38,7 @@
 			"data":{
 				"name":"Data",
 				"unique":false,
-				"type":"string",
+				"type":"object",
 				"required":false
 			},
 			"more": {
