@@ -11,7 +11,7 @@ var _ = require('underscore');
 var config = JSON.parse(fs.readFileSync(__dirname+ '/config.json', 'utf-8'));
 var schema = JSON.parse(fs.readFileSync(__dirname+ '/db/schema.json', 'utf-8'));
 
-var graph = new Data.Graph(schema);
+var graph = new Data.Graph(schema, false);
 graph.connect('couch', { url: config.couchdb_url });
 //graph.merge(schema,{dirty: true});
 
