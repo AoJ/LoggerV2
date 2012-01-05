@@ -26,6 +26,8 @@ app.get('/__log', function(req, res){
 	try {
 		var parsedUrl = (url.parse(req.url, true)).query;
 		parsedUrl.ip = "127.0.0.1";
+		parsedUrl.type = "/logger/print";
+
 		log(parsedUrl);
 		var l = graph.set(parsedUrl);
 		log(l.errors);
