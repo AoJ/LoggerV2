@@ -28,10 +28,8 @@ app.get('/__log', function(req, res){
 		parsedUrl.ip = "127.0.0.1";
 		parsedUrl.type = "/logger/print";
 
-		log(parsedUrl);
-		var l = graph.set(parsedUrl);
-		log(l.errors);
-		log(JSON.stringify(graph));
+		var data = graph.set(parsedUrl);
+		if(!data.validate()) res.end(data.errors);
 
 		//everyone.now.__log(logData);
 		graph.sync(function(err) { log(parsedUrl, err ? 'FAIL' : 'SAVED') });
@@ -39,6 +37,7 @@ app.get('/__log', function(req, res){
 	} catch(err) {
 		log(err);
 	}
+	res.end('OK');
 });
 
 var nowjs = require("now");
