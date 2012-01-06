@@ -54,8 +54,13 @@ app.get('/:name/__log', function(req, res, next){
 
 
 nowjs.on('connect', function() {
-	log(this.now.name);
-  //this.user.clientId
+	var name = this.now.name || 'unknown';
+	var group = nowjs.getGroup(name);
+
+	if(! group.hasClient(this.user.clientId)) {
+		group.addUser(this.user.clientId);
+	}
+	log(group);
 });
 
 function log(data, msg) {
