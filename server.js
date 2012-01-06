@@ -5,43 +5,59 @@ var fs = require('fs');
 var async = require('async');
 var Data = require('data');
 var url  = require('url');
+var nowjs = require("now");
 var _ = require('underscore');
 
 // App Config
 var config = JSON.parse(fs.readFileSync(__dirname+ '/config.json', 'utf-8'));
-var schema = JSON.parse(fs.readFileSync(__dirname+ '/db/schema.json', 'utf-8'));
-
-var graph = new Data.Graph(schema, false);
-graph.connect('couch', { url: config.couchdb_url });
-//graph.merge(schema,{dirty: true});
 
 app.configure(function() {
   app.use(app.router);
   app.use(express.static(__dirname+"/public"));
 }).listen(config.server_port, config.server_host);
 
+var groups = new Data.Hash();
 
-app.get('/__log', function(req, res){
-	res.end('OK');
-	try {
-		var parsedUrl = (url.parse(req.url, true)).query;
-		parsedUrl.ip = "127.0.0.1";
-		parsedUrl.type = "/logger/print";
+app.get('x:name', function(req, res){
+	var name = req.params.name;
+	var group = nowjs.getGroup(name);
 
-		var data = graph.set(parsedUrl);
-		if(!data.validate()) res.end(data.errors);
-
-		//everyone.now.__log(logData);
-		graph.sync(function(err) { log(parsedUrl, err ? 'FAIL' : 'SAVED') });
-
-	} catch(err) {
-		log(err);
+	//add new group if not exists
+	if ( ! (groups.index(name) >= 0)) {
+		groups.set(name, group);
 	}
-	res.end('OK');
+
+	//if(! group.has)
+
+	//parse request
+	var parsedUrl = (url.parse(req.url, true) || {}).query;
+
+	group.now.newData(parsedUrl);
+
 });
 
-var nowjs = require("now");
+app.get(':name/__log', function(req, res){
+	var name = req.params.name;
+	var group = nowjs.getGroup(name);
+
+	//add new group if not exists
+	if ( ! (groups.index(name) >= 0)) {
+		groups.set(name, group);
+	}
+
+	//parse request
+	var parsedUrl = (url.parse(req.url, true) || {}).query;
+
+	group.now.newData(parsedUrl);
+
+});
+
+
 var everyone = nowjs.initialize(app);
+
+nowjs.on('connect', function() {
+  //this.user.clientId
+});
 
 
 everyone.now.distribute = function(message){
