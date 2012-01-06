@@ -22,17 +22,10 @@ function serveStartpage(req, res) {
 }
 var groups = new Data.Hash();
 
-app.get('/:name', function(req, res){
-	var name = req.params.name;
-
-	html = fs.readFileSync(__dirname+ '/public/index.html', 'utf-8');
-	res.send(html.replace('{{{{name}}}}', name));
-
-});
 
 app.get('/:name/__log', function(req, res, next){
 	res.send('OK');
-	var name = req.params.name;
+	//var name = req.params.name;
 	//var group = nowjs.getGroup(name);
 
 	//add new group if not exists
@@ -50,7 +43,14 @@ app.get('/:name/__log', function(req, res, next){
 	everyone.now.distribute(parsedUrl);
 	//log(parsedUrl);
 
-	next();
+});
+
+app.get('/:name', function(req, res){
+	var name = req.params.name;
+
+	html = fs.readFileSync(__dirname+ '/public/index.html', 'utf-8');
+	res.send(html.replace('{{{{name}}}}', name));
+
 });
 
 
