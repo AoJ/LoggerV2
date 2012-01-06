@@ -23,7 +23,7 @@ function serveStartpage(req, res) {
 var groups = new Data.Hash();
 
 
-app.get('l/:name/__log', function(req, res, next){
+app.get('/l/:name/__log', function(req, res, next){
 	res.send('OK');
 	//var name = req.params.name;
 	//var group = nowjs.getGroup(name);
