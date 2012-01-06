@@ -36,7 +36,7 @@ app.get('x:name', function(req, res){
 
 });
 
-app.get(':name/__log', function(req, res){
+app.get(':id/__log', function(req, res){
 	var name = req.params.name;
 	var group = nowjs.getGroup(name);
 
