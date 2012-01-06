@@ -25,7 +25,7 @@ var groups = new Data.Hash();
 app.get('/:name', function(req, res){
 	var name = req.params.name;
 	html = fs.readFileSync(__dirname+ '/public/index.html', 'utf-8');
-	res.send(html.replace('{{{{name}}}}', JSON.stringify(name)));
+	res.send(html.replace('{{{{name}}}}', name));
 });
 
 app.get('/:name/__log', function(req, res, next){
