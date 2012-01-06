@@ -20,6 +20,8 @@ app.configure(function() {
 
 var groups = new Data.Hash();
 
+var called = 0;
+
 
 app.get('/l/:name/__log', function(req, res, next){
 	res.send('OK');
@@ -37,9 +39,12 @@ app.get('/l/:name/__log', function(req, res, next){
 	//parse request
 	var parsedUrl = (url.parse(req.url, true) || {}).query;
 
+	called++;
+
 	//group.now.distribute(parsedUrl);
 	everyone.now.distribute(parsedUrl);
 	//log(parsedUrl);
+
 
 });
 
@@ -53,18 +58,19 @@ app.get('/test', function(req, res){
 
 
 
-nowjs.on('connect', function() {
-	var name = this.now.name || 'unknown';
+//nowjs.on('connect', function() {
+	//var name = this.now.name || 'unknown';
 	//var group = nowjs.getGroup(name);
 
 	//if(! group.hasClient(this.user.clientId)) {
 	//	group.addUser(this.user.clientId);
 	//}
 	//log(group);
-});
+//});
 
 everyone.now.distribute = function(data) {
 	everyone.now.newData(data);
+	log(called);
 }
 
 function log(data, msg) {
