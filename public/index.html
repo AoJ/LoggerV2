@@ -30,7 +30,7 @@
 
 	now.newData = function (message) {
 		data.set(undefined, message);
-		console.log(data);
+		$('#test').appendChild($('<div />').value(data.items().length));
 	}
 
 </script>
