@@ -52,6 +52,7 @@ app.get('/:name/__log', function(req, res){
 	var parsedUrl = (url.parse(req.url, true) || {}).query;
 
 	group.now.distribute(parsedUrl);
+	res.send('OK');
 
 });
 

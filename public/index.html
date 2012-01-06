@@ -25,9 +25,9 @@ now.receive = function(name, message){
   $("#messages").append("<br>"+name+": "+message);
 };
 now.receiveLog = function(msg, data) { console.log(data, msg); }
-//now.newData = function(message){
-//  $("#test").append("<br>"+message);
-//}
+now.newData = function(message){
+  $("#test").append("<br>"+message);
+}
 $("#send-button").click(function(){
   now.distribute($("#text-input").val());
 });
