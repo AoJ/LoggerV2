@@ -48,7 +48,7 @@ app.get('/:name/__log', function(req, res, next){
 
 	//group.now.distribute(parsedUrl);
 	everyone.now.distribute(parsedUrl);
-	log(parsedUrl);
+	//log(parsedUrl);
 
 	next();
 });
@@ -62,7 +62,7 @@ nowjs.on('connect', function() {
 	if(! group.hasClient(this.user.clientId)) {
 		group.addUser(this.user.clientId);
 	}
-	log(group);
+	//log(group);
 });
 
 everyone.now.distribute = function(data) {
