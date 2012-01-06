@@ -10,33 +10,26 @@ var _ = require('underscore');
 
 // App Config
 var config = JSON.parse(fs.readFileSync(__dirname+ '/config.json', 'utf-8'));
+var everyone = nowjs.initialize(app);
 
 app.configure(function() {
   app.use(app.router);
   app.use(express.static(__dirname+"/public"));
 }).listen(config.server_port, config.server_host);
 
+function serveStartpage(req, res) {
+
+}
 var groups = new Data.Hash();
 
-app.get('x:name', function(req, res){
-	var name = req.params.name;
-	var group = nowjs.getGroup(name);
-
-	//add new group if not exists
-	if ( ! (groups.index(name) >= 0)) {
-		groups.set(name, group);
-	}
-
-	//if(! group.has)
-
-	//parse request
-	var parsedUrl = (url.parse(req.url, true) || {}).query;
-
-	group.now.newData(parsedUrl);
+app.get('/:name', function(req, res){
+	html = fs.readFileSync(__dirname+ '/public/index.html', 'utf-8');
+	res.send(html.replace('{{{{name}}}}', JSON.stringify(name)));
 
 });
 
-app.get('/:name/__log', function(req, res){
+app.get('/:name/__log', function(req, res, next){
+	res.send('OK');
 	var name = req.params.name;
 	var group = nowjs.getGroup(name);
 
@@ -52,21 +45,15 @@ app.get('/:name/__log', function(req, res){
 	var parsedUrl = (url.parse(req.url, true) || {}).query;
 
 	group.now.distribute(parsedUrl);
-	res.send('OK');
 
+	next();
 });
 
 
-var everyone = nowjs.initialize(app);
 
 nowjs.on('connect', function() {
   //this.user.clientId
 });
-
-
-everyone.now.distribute = function(message){
-  everyone.now.receive(this.now.name, message);
-};
 
 function log(data, msg) {
 	if(!msg) msg = undefined;
