@@ -36,8 +36,8 @@ app.get('x:name', function(req, res){
 
 });
 
-app.get(':id/__log', function(req, res){
-	var name = req.params.name;
+app.get('everyone/__log', function(req, res){
+	var name = req.params.name || 'everyone';
 	var group = nowjs.getGroup(name);
 
 	//add new group if not exists
