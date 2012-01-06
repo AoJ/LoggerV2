@@ -42,13 +42,16 @@ app.get('/:name/__log', function(req, res){
 
 	//add new group if not exists
 	if ( ! (groups.index(name) >= 0)) {
+		group.now.distribute = function(data) {
+			group.now.newData(data);
+		}
 		groups.set(name, group);
 	}
 
 	//parse request
 	var parsedUrl = (url.parse(req.url, true) || {}).query;
 
-	group.now.newData(parsedUrl);
+	group.now.distribute(parsedUrl);
 
 });
 
