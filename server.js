@@ -33,15 +33,15 @@ app.get('/:name', function(req, res){
 app.get('/:name/__log', function(req, res, next){
 	res.send('OK');
 	var name = req.params.name;
-	var group = nowjs.getGroup(name);
+	//var group = nowjs.getGroup(name);
 
 	//add new group if not exists
-	if ( ! (groups.index(name) >= 0)) {
-		group.now.distribute = function(data) {
-			group.now.newData(data);
-		}
-		groups.set(name, group);
-	}
+	//if ( ! (groups.index(name) >= 0)) {
+	//	group.now.distribute = function(data) {
+	//		group.now.newData(data);
+	//	}
+		//groups.set(name, group);
+	//}
 
 	//parse request
 	var parsedUrl = (url.parse(req.url, true) || {}).query;
@@ -57,11 +57,11 @@ app.get('/:name/__log', function(req, res, next){
 
 nowjs.on('connect', function() {
 	var name = this.now.name || 'unknown';
-	var group = nowjs.getGroup(name);
+	//var group = nowjs.getGroup(name);
 
-	if(! group.hasClient(this.user.clientId)) {
-		group.addUser(this.user.clientId);
-	}
+	//if(! group.hasClient(this.user.clientId)) {
+	//	group.addUser(this.user.clientId);
+	//}
 	//log(group);
 });
 
