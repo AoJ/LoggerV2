@@ -27,7 +27,7 @@
       <file leaf-file-name="server.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/server.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="10" selection-start="627" selection-end="627" vertical-scroll-proportion="0.29083094">
+            <state line="45" column="14" selection-start="1089" selection-end="1089" vertical-scroll-proportion="0.70916903">
               <folding />
             </state>
           </provider>
@@ -442,15 +442,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/javascripts/data.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1633" column="5" selection-start="50457" selection-end="50457" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server.js_old">
       <provider selected="true" editor-type-id="text-editor">
         <state line="26" column="8" selection-start="759" selection-end="808" vertical-scroll-proportion="0.0">
@@ -465,9 +456,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/public/javascripts/data.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1633" column="5" selection-start="50457" selection-end="50457" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/server.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="10" selection-start="627" selection-end="627" vertical-scroll-proportion="0.29083094">
+        <state line="45" column="14" selection-start="1089" selection-end="1089" vertical-scroll-proportion="0.70916903">
           <folding />
         </state>
       </provider>

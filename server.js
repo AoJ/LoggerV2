@@ -17,9 +17,7 @@ app.configure(function() {
   app.use(express.static(__dirname+"/public"));
 }).listen(config.server_port, config.server_host);
 
-function serveStartpage(req, res) {
 
-}
 var groups = new Data.Hash();
 
 
@@ -45,7 +43,7 @@ app.get('/l/:name/__log', function(req, res, next){
 
 });
 
-app.get('/:name', function(req, res){
+app.get('/test', function(req, res){
 	var name = req.params.name;
 
 	html = fs.readFileSync(__dirname+ '/public/index.html', 'utf-8');
