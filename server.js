@@ -46,7 +46,9 @@ app.get('/:name/__log', function(req, res, next){
 	//parse request
 	var parsedUrl = (url.parse(req.url, true) || {}).query;
 
-	group.now.distribute(parsedUrl);
+	//group.now.distribute(parsedUrl);
+	everyone.now.distribute(parsedUrl);
+	log(parsedUrl);
 
 	next();
 });
@@ -62,6 +64,10 @@ nowjs.on('connect', function() {
 	}
 	log(group);
 });
+
+everyone.now.distribute = function(data) {
+	everyone.now.newData(data);
+}
 
 function log(data, msg) {
 	if(!msg) msg = undefined;
