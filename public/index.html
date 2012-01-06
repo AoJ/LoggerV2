@@ -20,7 +20,13 @@
 	now.name = name;
 	now.receiveLog = function (msg, data) { console.log(data, msg); }
 
-	var data = new Data.Collection();
+	var data = new Data.Collection( {
+		"properties": {
+			"a": {"name": "Country Name", "type": "string", "unique": false },
+			"b": {"name": "Official Language", "type": "string", "unique": false },
+			"c": { "name": "Population", "type": "string", "unique": false }
+		}
+	});
 	console.log(data);
 
 	now.newData = function (message) {
