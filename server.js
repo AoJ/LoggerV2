@@ -16,6 +16,7 @@ app.configure(function() {
 var	logger = require('./logger').initialize(app)
 ,	homepage = fs.readFileSync(__dirname+ '/public/index.html', 'utf-8');
 
+console.log(logger);
 
 /* ----- ROUTES -----*/
 
