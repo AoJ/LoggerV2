@@ -42,7 +42,7 @@ logger.prototype = {
 	printData: function(name, params) {
 		var data = params.query || {};
 
-		this.getGroup(name).distribute(data);
+		this.groups.get(name).now.distribute(data);
 	},
 
 	/**
