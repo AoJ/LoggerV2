@@ -4,49 +4,13 @@
 		"type":"type",
 		"name":"Print",
 		"properties":{
-
-			"time":{
-				"name":"Time",
-				"unique":false,
-				"type":"string",
-				"required":false
-			},
-			"user":{
-				"name":"User",
-				"unique":false,
-				"required":false,
-				"type":["/logger/user"]
-			},
-			"project":{
-				"name":"Project",
-				"unique":false,
-				"type":"string",
-				"required":false
-			},
-			"ip":{
-				"name":"IP",
-				"unique":false,
-				"type":"string",
-				"required":true
-			},
-			"message":{
-				"name":"Message",
-				"unique":false,
-				"type":"string",
-				"required":true
-			},
-			"data":{
-				"name":"Data",
-				"unique":false,
-				"type":"object",
-				"required":false
-			},
-			"more": {
-				"name":"More",
-				"unique":false,
-				"type":"object",
-				"required":false
-			}
+			"time":{ "name":"Time", "type":"string" },
+			"user":{ "name":"User", "type":["/logger/user"] },
+			"project":{ "name":"Project", "type":"string" },
+			"ip":{ "name":"IP", "unique":false, "type":"string" },
+			"message":{ "name":"Message", "type":"string" },
+			"data":{ "name":"Data", "type":"mixed" },
+			"ext": { "name":"Extension data", "type":"object" }
 		},
 		"indexes":{
 			"key":["time", "user", "project"],
