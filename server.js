@@ -30,7 +30,9 @@ app.get('/:name/__log', function(req, res, next){
 
 
 app.get('/:name', function(req, res){
-	console.log(logger);
+	setTimeout(function() {
+		console.log(logger);
+	}, 1000);
 	logger.log(req.params);
 	var name = req.params.name || 'unknown';
 
