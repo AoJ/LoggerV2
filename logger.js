@@ -43,6 +43,10 @@ logger.prototype = {
 		var data = params.query || {};
 
 		this.groups.get(name).now.distribute(data);
+		console.log(this.groups.get(name));
+		this.everyone.distribute = function(data){
+			this.everyone.newData(data);
+		}();
 	},
 
 	/**
