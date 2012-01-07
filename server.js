@@ -31,7 +31,7 @@ app.get('/:name/__log', function(req, res, next){
 
 app.get('/:name', function(req, res){
 	setTimeout(function() {
-		//console.log(logger);
+		console.log(logger);
 	}, 1000);
 	logger.log(req.params);
 	var name = req.params.name || 'unknown';
@@ -39,4 +39,4 @@ app.get('/:name', function(req, res){
 	res.send(homepage.replace('{{{{name}}}}', name));
 });
 
-app.login(0);
+app.listen(0);
