@@ -27,7 +27,7 @@
       <file leaf-file-name="server.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/server.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="33" column="8" selection-start="656" selection-end="656" vertical-scroll-proportion="0.70916903">
+            <state line="33" column="10" selection-start="658" selection-end="658" vertical-scroll-proportion="0.70916903">
               <folding />
             </state>
           </provider>
@@ -408,7 +408,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/server.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="8" selection-start="656" selection-end="656" vertical-scroll-proportion="0.70916903">
+        <state line="33" column="10" selection-start="658" selection-end="658" vertical-scroll-proportion="0.70916903">
           <folding />
         </state>
       </provider>

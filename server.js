@@ -31,9 +31,9 @@ app.get('/:name/__log', function(req, res, next){
 
 app.get('/:name', function(req, res){
 	setTimeout(function() {
-		console.log(logger);
+		//console.log(logger);
 	}, 1000);
-	logger.log(req.params);
+	//logger.log(req.params);
 	var name = req.params.name || 'unknown';
 
 	res.send(homepage.replace('{{{{name}}}}', name));
