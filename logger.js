@@ -53,7 +53,7 @@ logger.prototype = {
 
 		//bootstrap new group
 		if (!_.isFunction(group.now.distribute)) {
-			trace('new group', [name, group]);
+			this.trace('new group', [name, group]);
 			group.now.distribute = function(data) {
 				group.now.newData(data);
 			}
