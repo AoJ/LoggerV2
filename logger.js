@@ -90,7 +90,7 @@ logger.prototype = {
 	 */
 	addUserToGroup: function(group, clientId) {
 		//if (! group.hasClient(clientId)) {
-			trace('new user in group', group, clientId);
+			this.trace('new user in group', group, clientId);
 			group.addUser(clientId);
 		//}
 		return group;
