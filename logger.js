@@ -6,7 +6,7 @@ var
 ;
 
 var logger = function() {
-	this.uid = Math.floor(Math.random * 1e5);
+	this.uid = Math.floor(Math.random * 10000);
 };
 
 logger.prototype = {
@@ -18,6 +18,7 @@ logger.prototype = {
 	 */
 	initialize: function(app) {
 		this.everyone = nowjs.initialize(app);
+		this.groups = new Data.hash;
 
 		//@TODO refactor
 		var that = this;
@@ -50,6 +51,27 @@ logger.prototype = {
 	 * @return group
 	 */
 	getGroup: function(name) {
+
+		//return exists group
+		var foundGroupIndex = this.groups.index(name);
+		if(foundGroupIndex >= 0) {
+			return this.groups.at(foundGroupIndex);
+		}
+
+		//group don't exists yet,
+		//then create new
+		var group = this.initGroup(name);
+		this.groups.set(name, group);
+
+		return group;
+	},
+
+	/**
+	 * initialize new group
+	 * @param name
+	 * @return group
+	 */
+	initGroup: function(name) {
 		var group = nowjs.getGroup(name);
 
 		//bootstrap new group
