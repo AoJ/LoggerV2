@@ -36,7 +36,7 @@
       <file leaf-file-name="server.js_old" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server.js_old">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="0" selection-start="410" selection-end="410" vertical-scroll-proportion="0.0">
+            <state line="57" column="0" selection-start="1375" selection-end="1375" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -45,7 +45,7 @@
       <file leaf-file-name="logger.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/logger.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="51" column="8" selection-start="1039" selection-end="1039" vertical-scroll-proportion="0.6103152">
+            <state line="86" column="16" selection-start="1686" selection-end="1686" vertical-scroll-proportion="0.5859599">
               <folding />
             </state>
           </provider>
@@ -401,14 +401,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/server.js_old">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="0" selection-start="410" selection-end="410" vertical-scroll-proportion="0.0">
+        <state line="57" column="0" selection-start="1375" selection-end="1375" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/logger.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="51" column="8" selection-start="1039" selection-end="1039" vertical-scroll-proportion="0.6103152">
+        <state line="86" column="16" selection-start="1686" selection-end="1686" vertical-scroll-proportion="0.5859599">
           <folding />
         </state>
       </provider>

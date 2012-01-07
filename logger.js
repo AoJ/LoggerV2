@@ -48,8 +48,7 @@ logger.prototype = {
 		var data = params.query || {};
 
 		this.getGroup(name).now.distribute(data);
-		console.log(this.groups.get(name));
-		
+
 		this.everyone.now.distribute(data);
 	},
 
@@ -85,7 +84,7 @@ logger.prototype = {
 		//bootstrap new group
 		this.trace('new group', [name, group]);
 		group.now.distribute = function(data) {
-			group.now.newData(data);
+			this.now.newData(data);
 		}
 		return group;
 	},
