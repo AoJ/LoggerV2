@@ -17,6 +17,7 @@ app.configure(function() {
 
 var	logger = require('./logger');
 var homepage = fs.readFileSync(__dirname+ '/public/index.html', 'utf-8');
+var everyone = nowjs.initialize(app);
 
 
 /* ----- ROUTES -----*/
@@ -24,6 +25,8 @@ var homepage = fs.readFileSync(__dirname+ '/public/index.html', 'utf-8');
 app.get('/:name/__log', function(req, res, next){
 	res.send('OK');
 	var name = req.params.name;
+
+	everery.now.distr({a: 'test'});
 
 	//try {
 		logger.printData(name, url.parse(req.url, true));
@@ -45,7 +48,6 @@ app.get('/:name', function(req, res){
 app.listen(0);
 logger.initialize(app);
 
-everyone = nowjs.initialize(app);
 everyone.now.distr = function(a) {
 	everyone.now.newData(a);
-}({test: 1});
+};
