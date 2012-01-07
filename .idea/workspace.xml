@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2c8e5165-0fde-4384-9066-fc19369d8d3c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server.js" afterPath="$PROJECT_DIR$/server.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/index.html" afterPath="$PROJECT_DIR$/public/index.html" />
     </list>
     <ignored path="loggerv2.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -24,10 +24,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="server.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="server.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="12" selection-start="550" selection-end="550" vertical-scroll-proportion="0.48424068">
+            <state line="28" column="12" selection-start="550" selection-end="550" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -78,10 +78,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="23" selection-start="502" selection-end="502" vertical-scroll-proportion="-12.5">
+            <state line="31" column="29" selection-start="885" selection-end="885" vertical-scroll-proportion="0.689911">
               <folding />
             </state>
           </provider>
@@ -116,12 +116,12 @@
         <option value="$PROJECT_DIR$/db/seed.js" />
         <option value="$PROJECT_DIR$/config.json" />
         <option value="$PROJECT_DIR$/public/javascripts/data.js" />
-        <option value="$PROJECT_DIR$/public/index.html" />
         <option value="$PROJECT_DIR$/db/schema.json" />
         <option value="$PROJECT_DIR$/logger/app.js" />
         <option value="$PROJECT_DIR$/logger.js" />
         <option value="$PROJECT_DIR$/server.js_old" />
         <option value="$PROJECT_DIR$/server.js" />
+        <option value="$PROJECT_DIR$/public/index.html" />
       </list>
     </option>
   </component>
@@ -379,13 +379,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="23" selection-start="502" selection-end="502" vertical-scroll-proportion="-12.5">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/db/schema.json">
       <provider selected="true" editor-type-id="text-editor">
         <state line="7" column="13" selection-start="148" selection-end="148" vertical-scroll-proportion="0.0">
@@ -409,7 +402,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/server.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="12" selection-start="550" selection-end="550" vertical-scroll-proportion="0.48424068">
+        <state line="28" column="12" selection-start="550" selection-end="550" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="31" column="29" selection-start="885" selection-end="885" vertical-scroll-proportion="0.689911">
           <folding />
         </state>
       </provider>
