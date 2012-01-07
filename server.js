@@ -29,7 +29,7 @@ app.get('/:name/__log', function(req, res, next){
 	everery.now.distr({a: 'test'});
 
 	//try {
-		logger.printData(name, url.parse(req.url, true));
+		//logger.printData(name, url.parse(req.url, true));
 	//}
 	//catch(err) { console.log(err, 'error'); }
 });
@@ -46,7 +46,7 @@ app.get('/:name', function(req, res){
 });
 
 app.listen(0);
-logger.initialize(app);
+//logger.initialize(app);
 
 everyone.now.distr = function(a) {
 	everyone.now.newData(a);
