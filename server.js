@@ -25,10 +25,8 @@ logger.initialize(everyone);
 /* ----- ROUTES -----*/
 
 app.get('/:name/__log', function(req, res, next){
-	res.send('OK');
 	var name = req.params.name;
-
-	//everyone.now.newData({a: 'test'});
+	res.send(name);
 
 	//try {
 		logger.printData(name, url.parse(req.url, true));
@@ -48,8 +46,3 @@ app.get('/:name', function(req, res){
 });
 
 app.listen(0);
-
-
-everyone.now.distr = function(a) {
-	everyone.now.newData(a);
-};

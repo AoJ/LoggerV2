@@ -20,11 +20,6 @@ logger.prototype = {
 		this.everyone = everyone;
 		this.groups = new Data.Hash();
 
-		var e = this.everyone;
-		this.everyone.now.distribute = function(data) {
-			e.now.newData(data);
-		};
-
 		//@TODO refactor
 		var that = this;
 		nowjs.on('connect', function() {
@@ -48,9 +43,6 @@ logger.prototype = {
 		var data = params.query || {};
 
 		this.getGroup(name).now.distribute(data);
-
-		//this.everyone.now.distribute(data);
-		//this.everyone.now.newData(data);
 	},
 
 	/**
@@ -97,10 +89,10 @@ logger.prototype = {
 	 * @return group
 	 */
 	addUserToGroup: function(group, clientId) {
-		//if (! group.hasClient(clientId)) {
-		//	trace('new user in group', group, clientId);
+		if (! group.hasClient(clientId)) {
+			trace('new user in group', group, clientId);
 			group.addUser(clientId);
-		//}
+		}
 		return group;
 	},
 
