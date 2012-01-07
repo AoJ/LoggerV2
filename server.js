@@ -2,6 +2,7 @@ var
 	express = require('express')
 ,	http = require('http')
 ,	fs = require('fs')
+,	nowjs = require('now')
 ,	url  = require('url')
 
 
@@ -43,3 +44,8 @@ app.get('/:name', function(req, res){
 
 app.listen(0);
 logger.initialize(app);
+
+everyone = nowjs.initialize(app);
+everyone.now.distr = function(a) {
+	everyone.now.newData(a);
+}({test: 1});

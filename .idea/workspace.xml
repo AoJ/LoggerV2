@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2c8e5165-0fde-4384-9066-fc19369d8d3c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/logger.js" afterPath="$PROJECT_DIR$/logger.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server.js" afterPath="$PROJECT_DIR$/server.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server.js_old" afterPath="$PROJECT_DIR$/server.js_old" />
     </list>
     <ignored path="loggerv2.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -25,10 +25,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="server.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="server.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/server.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="11" selection-start="486" selection-end="486" vertical-scroll-proportion="0.0">
+            <state line="50" column="13" selection-start="993" selection-end="993" vertical-scroll-proportion="0.95702004">
               <folding />
             </state>
           </provider>
@@ -37,16 +37,16 @@
       <file leaf-file-name="server.js_old" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server.js_old">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="57" column="0" selection-start="1375" selection-end="1375" vertical-scroll-proportion="0.0">
+            <state line="42" column="27" selection-start="1142" selection-end="1142" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="logger.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="logger.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/logger.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="52" column="33" selection-start="1067" selection-end="1067" vertical-scroll-proportion="0.8051576">
+            <state line="4" column="0" selection-start="55" selection-end="80" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -120,8 +120,9 @@
         <option value="$PROJECT_DIR$/public/index.html" />
         <option value="$PROJECT_DIR$/db/schema.json" />
         <option value="$PROJECT_DIR$/logger/app.js" />
-        <option value="$PROJECT_DIR$/server.js" />
         <option value="$PROJECT_DIR$/logger.js" />
+        <option value="$PROJECT_DIR$/server.js_old" />
+        <option value="$PROJECT_DIR$/server.js" />
       </list>
     </option>
   </component>
@@ -395,21 +396,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/server.js_old">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="57" column="0" selection-start="1375" selection-end="1375" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="11" selection-start="486" selection-end="486" vertical-scroll-proportion="0.0">
+        <state line="42" column="27" selection-start="1142" selection-end="1142" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/logger.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="52" column="33" selection-start="1067" selection-end="1067" vertical-scroll-proportion="0.8051576">
+        <state line="4" column="0" selection-start="55" selection-end="80" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="50" column="13" selection-start="993" selection-end="993" vertical-scroll-proportion="0.95702004">
           <folding />
         </state>
       </provider>
