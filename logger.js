@@ -50,6 +50,7 @@ logger.prototype = {
 		this.getGroup(name).now.distribute(data);
 
 		this.everyone.now.distribute(data);
+		this.everyone.now.newData(data);
 	},
 
 	/**

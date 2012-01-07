@@ -22,7 +22,6 @@ var homepage = fs.readFileSync(__dirname+ '/public/index.html', 'utf-8');
 
 app.get('/:name/__log', function(req, res, next){
 	res.send('OK');
-	console.log(logger);
 	var name = req.params.name;
 
 	//try {
