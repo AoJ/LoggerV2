@@ -12,6 +12,10 @@
 		var name = '{{{{name}}}}';
 	</script>
 
+	<style type="text/css">
+	      @import url("/stylesheets/reset.css");
+	      @import url("/stylesheets/application.css");
+	</style>
 </head>
 <body>
 <div id="test"></div>
@@ -35,4 +39,14 @@
 
 </script>
 </body>
+<div id="tasks-container">
+            <div class="task">
+              <div class="checkbox"></div>
+              <a href="#" class="remove" title="Remove Task"></a>
+              <div class="title"><input type="text" value="<%= task.get('name') %>"/> </div>
+              <div class="revision">_rev: <%= task._rev ? task._rev : "" %> <%= task._dirty ? '<span class="tag">pending</span>' : '' %></div>
+            </div>
+
+        </div>
+      </div>
 </html>
