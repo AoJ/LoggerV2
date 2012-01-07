@@ -75,11 +75,9 @@ logger.prototype = {
 		var group = nowjs.getGroup(name);
 
 		//bootstrap new group
-		if (!_.isFunction(group.now.distribute)) {
-			this.trace('new group', [name, group]);
-			group.now.distribute = function(data) {
-				group.now.newData(data);
-			}
+		this.trace('new group', [name, group]);
+		group.now.distribute = function(data) {
+			group.now.newData(data);
 		}
 		return group;
 	},
