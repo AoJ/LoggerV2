@@ -16,6 +16,7 @@ app.configure(function() {
 var	logger = require('./logger').initialize(app)
 ,	homepage = fs.readFileSync(__dirname+ '/public/index.html', 'utf-8');
 
+}).listen(0);
 
 
 /* ----- ROUTES -----*/
@@ -38,5 +39,3 @@ app.get('/:name', function(req, res){
 
 	res.send(homepage.replace('{{{{name}}}}', name));
 });
-
-}).listen(0);
