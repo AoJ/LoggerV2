@@ -24,8 +24,10 @@ app.get('/:name/__log', function(req, res, next){
 	res.send('OK');
 	var name = req.params.name;
 
-	try { logger.printData(name, url.parse(req.url, true)); }
-	catch(err) { console.log(err, 'error'); }
+	//try {
+		logger.printData(name, url.parse(req.url, true));
+	//}
+	//catch(err) { console.log(err, 'error'); }
 });
 
 
