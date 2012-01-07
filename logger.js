@@ -44,8 +44,9 @@ logger.prototype = {
 
 		this.groups.get(name).now.distribute(data);
 		console.log(this.groups.get(name));
-		this.everyone.now.distribute = function(data){
-			this.everyone.now.newData(data);
+		var e = this.everyone.now;
+		e.distribute = function(data){
+			e.newData(data);
 		}();
 	},
 
