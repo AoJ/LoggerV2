@@ -20,6 +20,11 @@ logger.prototype = {
 		this.everyone = nowjs.initialize(app);
 		this.groups = new Data.Hash();
 
+		var e = this.everyone;
+		this.everyone.now.distribute = function(data) {
+			e.now.newData(data);
+		};
+
 		//@TODO refactor
 		var that = this;
 		nowjs.on('connect', function() {
@@ -44,10 +49,8 @@ logger.prototype = {
 
 		this.getGroup(name).now.distribute(data);
 		console.log(this.groups.get(name));
-		var e = this.everyone.now;
-		e.distribute = function(data){
-			e.newData(data);
-		}();
+		
+		this.everyone.now.distribute(data);
 	},
 
 	/**
