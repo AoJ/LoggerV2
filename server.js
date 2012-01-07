@@ -14,7 +14,7 @@ app.configure(function() {
 
 });
 
-var	logger = require('./logger').initialize(app);
+var	logger = require('./logger');
 var homepage = fs.readFileSync(__dirname+ '/public/index.html', 'utf-8');
 
 
@@ -43,3 +43,4 @@ app.get('/:name', function(req, res){
 });
 
 app.listen(0);
+logger.initialize(app);

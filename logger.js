@@ -6,7 +6,7 @@ var
 ;
 
 var logger = function() {
-	this.uid = Math.floor(Math.random * 10000);
+	this.uid = Math.floor(Math.random() * 10000);
 };
 
 logger.prototype = {
