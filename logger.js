@@ -18,7 +18,7 @@ logger.prototype = {
 	 */
 	initialize: function(app) {
 		this.everyone = nowjs.initialize(app);
-		this.groups = new Data.hash;
+		this.groups = new Data.Hash();
 
 		//@TODO refactor
 		var that = this;
