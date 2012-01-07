@@ -28,7 +28,7 @@ app.get('/:name/__log', function(req, res, next){
 });
 
 
-app.get('/:name/', function(req, res){
+app.get('/:name', function(req, res){
 	var name = req.params.name || 'unknown';
 
 	res.send(homepage.replace('{{{{name}}}}', name));
