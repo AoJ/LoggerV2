@@ -26,7 +26,7 @@ app.get('/:name/__log', function(req, res, next){
 	res.send('OK');
 	var name = req.params.name;
 
-	everery.now.distr({a: 'test'});
+	everyone.now.distr({a: 'test'});
 
 	//try {
 		//logger.printData(name, url.parse(req.url, true));
