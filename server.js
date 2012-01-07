@@ -13,7 +13,7 @@ app.configure(function() {
 
 }).listen(0);
 
-var	logger = require('./logger.js').initialize(app)
+var	logger = require('./logger').initialize(app)
 ,	homepage = fs.readFileSync(__dirname+ '/public/index.html', 'utf-8');
 
 
