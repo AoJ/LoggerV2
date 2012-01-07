@@ -22,6 +22,7 @@ var	logger = require('./logger.js').initialize(app)
 
 app.get('/:name/__log', function(req, res, next){
 	res.send('OK');
+	console.log(logger);
 	var name = req.params.name;
 
 	//try {
