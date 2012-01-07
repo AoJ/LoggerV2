@@ -30,6 +30,7 @@ logger.prototype = {
 
 			that.addUserToGroup(group, clientId);
 		});
+		return this;
 	},
 
 	/**

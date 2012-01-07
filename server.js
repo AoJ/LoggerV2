@@ -14,8 +14,8 @@ app.configure(function() {
 
 });
 
-var	logger = require('./logger.js').initialize(app)
-,	homepage = fs.readFileSync(__dirname+ '/public/index.html', 'utf-8');
+var	logger = require('./logger').initialize(app);
+var homepage = fs.readFileSync(__dirname+ '/public/index.html', 'utf-8');
 
 
 /* ----- ROUTES -----*/
