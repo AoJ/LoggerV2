@@ -5,7 +5,8 @@ var
 ,	url  = require('url')
 
 
-var app = express.createServer().configure(function() {
+var app = express.createServer();
+app.configure(function() {
 
   app.use(app.router);
   app.use(express.static(__dirname+"/public"));
