@@ -16,8 +16,8 @@ logger.prototype = {
 	 * @param nowjs
 	 * @param everyone
 	 */
-	initialize: function(app) {
-		this.everyone = nowjs.initialize(app);
+	initialize: function(everyone) {
+		this.everyone = everyone;
 		this.groups = new Data.Hash();
 
 		var e = this.everyone;
@@ -49,7 +49,7 @@ logger.prototype = {
 
 		this.getGroup(name).now.distribute(data);
 
-		this.everyone.now.distribute(data);
+		//this.everyone.now.distribute(data);
 		this.everyone.now.newData(data);
 	},
 
