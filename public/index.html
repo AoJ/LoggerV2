@@ -53,7 +53,6 @@
 	    };
 
 
-
 	    this.gridViewModel = new ko.simpleGrid.viewModel({
 	        data: this.items,
 	        columns: [
@@ -98,10 +97,6 @@
 
 <button data-bind='click: addItem'>
 	Add item
-</button>
-
-<button data-bind='click: sortByName'>
-	Sort by name
 </button>
 
 <button data-bind='click: jumpToFirstPage, enable: gridViewModel.currentPageIndex'>
