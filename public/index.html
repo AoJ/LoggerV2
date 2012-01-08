@@ -48,7 +48,7 @@
 	    this.items = ko.observableArray(items);
 
 	    this.addItem = function(newItem) {
-	        this.items.push(newItem);
+	        this.items.unshift(newItem);
 	    };
 
 	    this.sortByName = function() {
