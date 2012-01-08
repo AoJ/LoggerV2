@@ -42,7 +42,7 @@
 	    this.items = ko.observableArray(items);
 
 	    this.addItem = function(newItem) {
-	        this.cache.unshift(newItem);
+	        this.items.unshift(newItem);
 	    };
 
 
