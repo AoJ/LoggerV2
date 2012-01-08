@@ -43,7 +43,7 @@ logger.prototype = {
 		var data = params.query || {};
 
 		var now = new Date();
-		params.time = '' + now.format('yyyy-mm-dd HH:MM:ss');
+		params.time = '' + now.toUTCString();// format('yyyy-mm-dd HH:MM:ss');
 		this.getGroup(name).now.distribute(data);
 	},
 
