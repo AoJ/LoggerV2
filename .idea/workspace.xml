@@ -45,7 +45,7 @@
       <file leaf-file-name="logger.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/logger.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="44" column="65" selection-start="903" selection-end="903" vertical-scroll-proportion="0.26934096">
+            <state line="45" column="27" selection-start="889" selection-end="889" vertical-scroll-proportion="0.29369628">
               <folding />
             </state>
           </provider>
@@ -458,7 +458,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/logger.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="65" selection-start="903" selection-end="903" vertical-scroll-proportion="0.26934096">
+        <state line="45" column="27" selection-start="889" selection-end="889" vertical-scroll-proportion="0.29369628">
           <folding />
         </state>
       </provider>
