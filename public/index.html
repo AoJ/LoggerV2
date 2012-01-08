@@ -5,6 +5,9 @@
 	<title></title>
 
 	<script src="/javascripts/underscore.js"></script>
+	<script src="//cloud.github.com/downloads/SteveSanderson/knockout/knockout-2.0.0.debug.js"></script>
+	<script src="//knockoutjs.com/examples/resources/knockout.simpleGrid.1.3.js"></script>
+
 	<script src="/javascripts/now.js"></script>
 	<script src="/javascripts/data.js"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.js"></script>
@@ -13,40 +16,102 @@
 	</script>
 
 	<style type="text/css">
-	      @import url("/stylesheets/reset.css");
-	      @import url("/stylesheets/application.css");
+		@import url("/stylesheets/reset.css");
+		@import url("/stylesheets/application.css");
 	</style>
 </head>
 <body>
 <div id="test"></div>
 <script>
+	JSON.stringify()
 	var now = nowInitialize();
 	now.name = name;
 	now.receiveLog = function (msg, data) { console.log(data, msg); }
 
-	var data = new Data.Collection( {
-		"properties": {
-			"a": {"name": "Country Name", "type": "string", "unique": false },
-			"b": {"name": "Official Language", "type": "string", "unique": false },
-			"c": { "name": "Population", "type": "string", "unique": false }
+
+	var data = new Data.Collection({
+		"properties":{
+			"a":{"name":"Country Name", "type":"string", "unique":false },
+			"b":{"name":"Official Language", "type":"string", "unique":false },
+			"c":{ "name":"Population", "type":"string", "unique":false }
 		}
 	});
 
+	var initialData = [
+	    { name: "Well-Travelled Kitten", time: '1. 12. 12:30:00', IP: '192.168.0.1', message: 'order created', extData: {a: 23, b: 12} },
+	    { name: "Well-Travelled Kitten", time: '1. 12. 12:30:00', IP: '192.168.0.1', message: 'order created', extData: {a: 23, b: 12} },
+	    { name: "Well-Travelled Kitten", time: '1. 12. 12:30:00', IP: '192.168.0.1', message: 'order created', extData: {a: 23, b: 12} },
+	    { name: "Well-Travelled Kitten", time: '1. 12. 12:30:00', IP: '192.168.0.1', message: 'order created', extData: {a: 23, b: 12} },
+	];
+
+	var PagedGridModel = function(items) {
+	    this.items = ko.observableArray(items);
+
+	    this.addItem = function() {
+	        this.items.push({ name: "New item", sales: 0, price: 100 });
+	    };
+
+	    this.sortByName = function() {
+	        this.items.sort(function(a, b) {
+	            return a.name < b.name ? -1 : 1;
+	        });
+	    };
+
+	    this.jumpToFirstPage = function() {
+	        this.gridViewModel.currentPageIndex(0);
+	    };
+
+	    this.gridViewModel = new ko.simpleGrid.viewModel({
+	        data: this.items,
+	        columns: [
+	            { headerText: "Kind", rowText: "name" },
+	            { headerText: "Time", rowText: "time" },
+	            { headerText: "IP", rowText: 'IP' },
+	            { headerText: "Mesage", rowText: "message" },
+	            { headerText: "More data", rowText: function (item) { return JSON.stringify(item.extData); } }
+	        ],
+	        pageSize: 4
+	    });
+	};
+	var pageGridModel = new PagedGridModel(initialData);
+	$(function() {
+	    ko.applyBindings(pageGridModel);
+	});
+
+
 	now.newData = function (message) {
 		console.log(message);
-		data.set(undefined, message);
+		pageGridModel.addItem(message);
+		//data.set(undefined, message);
 	}
 
 </script>
 </body>
 <div id="tasks-container">
-            <div class="task">
-              <div class="checkbox"></div>
-              <a href="#" class="remove" title="Remove Task"></a>
-              <div class="title"><input type="text" value="<%= task.get('name') %>"/> </div>
-              <div class="revision">_rev: <%= task._rev ? task._rev : "" %> <%= task._dirty ? '<span class="tag">pending</span>' : '' %></div>
-            </div>
+	<div class="task">
+		<div class="checkbox"></div>
+		<a href="#" class="remove" title="Remove Task"></a>
 
-        </div>
-      </div>
+		<div class="title"><input type="text" value="<%= task.get('name') %>"/></div>
+		<div class="revision">_rev: <%= task._rev ? task._rev : "" %> <%= task._dirty ? '<span
+				class="tag">pending</span>' : '' %>
+		</div>
+	</div>
+
+</div>
+</div>
+
+<div id="hor-minimalist-b" data-bind='simpleGrid: gridViewModel'></div>
+
+<button data-bind='click: addItem'>
+	Add item
+</button>
+
+<button data-bind='click: sortByName'>
+	Sort by name
+</button>
+
+<button data-bind='click: jumpToFirstPage, enable: gridViewModel.currentPageIndex'>
+	Jump to first page
+</button>
 </html>
