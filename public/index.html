@@ -39,7 +39,7 @@
 
 
 	var PagedGridModel = function(items) {
-	    this.items = ko.observableArray(items);
+	    this.items = ko.observableArray(items || []);
 
 	    this.addItem = function(newItem) {
 	        this.items.unshift(newItem);
