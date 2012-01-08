@@ -37,9 +37,12 @@
 		}
 	});
 
+	var initialData = [
+	    { name: "Well-Travelled Kitten", time: '1. 12. 12:30:00', IP: '192.168.0.1', message: 'order created', extData: {a: 23, b: 12} }
+	];
 
 	var PagedGridModel = function(items) {
-	    this.items = ko.observableArray(items || []);
+	    this.items = ko.observableArray(items);
 
 	    this.addItem = function(newItem) {
 	        this.items.unshift(newItem);
@@ -63,7 +66,7 @@
 	        pageSize: 8
 	    });
 	};
-	var pageGridModel = new PagedGridModel();
+	var pageGridModel = new PagedGridModel(initialData);
 	$(function() {
 	    ko.applyBindings(pageGridModel);
 	});
