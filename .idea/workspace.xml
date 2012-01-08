@@ -45,7 +45,7 @@
       <file leaf-file-name="logger.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/logger.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="45" column="45" selection-start="907" selection-end="907" vertical-scroll-proportion="0.29369628">
+            <state line="45" column="12" selection-start="874" selection-end="874" vertical-scroll-proportion="0.29369628">
               <folding />
             </state>
           </provider>
@@ -81,7 +81,7 @@
       <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="44" column="50" selection-start="1375" selection-end="1375" vertical-scroll-proportion="-7.4583335">
+            <state line="44" column="50" selection-start="1375" selection-end="1375" vertical-scroll-proportion="-18.708334">
               <folding />
             </state>
           </provider>
@@ -442,13 +442,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="50" selection-start="1375" selection-end="1375" vertical-scroll-proportion="-7.4583335">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="30" column="53" selection-start="621" selection-end="621" vertical-scroll-proportion="0.0">
@@ -456,9 +449,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/public/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="44" column="50" selection-start="1375" selection-end="1375" vertical-scroll-proportion="-18.708334">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/logger.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="45" selection-start="907" selection-end="907" vertical-scroll-proportion="0.29369628">
+        <state line="45" column="12" selection-start="874" selection-end="874" vertical-scroll-proportion="0.29369628">
           <folding />
         </state>
       </provider>
