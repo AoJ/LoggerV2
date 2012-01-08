@@ -57,12 +57,19 @@
 	        });
 	    };
 
+		//ko.utils.arrayFilter - filter the items using the filter text
+		this.filteredItems = ko.dependentObservable(function() {
+		    return this.items();
+		});
+
 	    this.jumpToFirstPage = function() {
 	        this.gridViewModel.currentPageIndex(0);
 	    };
 
+
+
 	    this.gridViewModel = new ko.simpleGrid.viewModel({
-	        data: this.items,
+	        data: this.filteredItems(),
 	        columns: [
 	            { headerText: "Kind", rowText: "name" },
 	            { headerText: "Time", rowText: "time" },
