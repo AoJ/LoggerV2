@@ -58,9 +58,9 @@
 	    };
 
 		//ko.utils.arrayFilter - filter the items using the filter text
-		this.filteredItems = ko.dependentObservable(function() {
+		this.filteredItems = ko.dependentObservable(_.bind(function() {
 		    return this.items();
-		});
+		}, this));
 
 	    this.jumpToFirstPage = function() {
 	        this.gridViewModel.currentPageIndex(0);
