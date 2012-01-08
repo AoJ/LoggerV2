@@ -42,6 +42,7 @@ logger.prototype = {
 	printData: function(name, params) {
 		var data = params.query || {};
 
+		params.time = (new Date()).format('yyyy-mm-dd HH:MM:ss');
 		this.getGroup(name).now.distribute(data);
 	},
 
