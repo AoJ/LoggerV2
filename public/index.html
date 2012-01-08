@@ -37,30 +37,14 @@
 		}
 	});
 
-	var initialData = [
-	    { name: "Well-Travelled Kitten", time: '1. 12. 12:30:00', IP: '192.168.0.1', message: 'order created', extData: {a: 23, b: 12} },
-	    { name: "Well-Travelled Kitten", time: '1. 12. 12:30:00', IP: '192.168.0.1', message: 'order created', extData: {a: 23, b: 12} },
-	    { name: "Well-Travelled Kitten", time: '1. 12. 12:30:00', IP: '192.168.0.1', message: 'order created', extData: {a: 23, b: 12} },
-	    { name: "Well-Travelled Kitten", time: '1. 12. 12:30:00', IP: '192.168.0.1', message: 'order created', extData: {a: 23, b: 12} },
-	];
 
 	var PagedGridModel = function(items) {
 	    this.items = ko.observableArray(items);
 
 	    this.addItem = function(newItem) {
-	        this.items.unshift(newItem);
+	        this.cache.unshift(newItem);
 	    };
 
-	    this.sortByName = function() {
-	        this.items.sort(function(a, b) {
-	            return a.name < b.name ? -1 : 1;
-	        });
-	    };
-
-		//ko.utils.arrayFilter - filter the items using the filter text
-		this.filteredItems = ko.dependentObservable(_.bind(function() {
-		    return this.items();
-		}, this));
 
 	    this.jumpToFirstPage = function() {
 	        this.gridViewModel.currentPageIndex(0);
@@ -80,7 +64,7 @@
 	        pageSize: 8
 	    });
 	};
-	var pageGridModel = new PagedGridModel(initialData);
+	var pageGridModel = new PagedGridModel();
 	$(function() {
 	    ko.applyBindings(pageGridModel);
 	});
