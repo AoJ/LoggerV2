@@ -47,8 +47,8 @@
 	var PagedGridModel = function(items) {
 	    this.items = ko.observableArray(items);
 
-	    this.addItem = function() {
-	        this.items.push({ name: "New item", sales: 0, price: 100 });
+	    this.addItem = function(newItem) {
+	        this.items.push(newItem);
 	    };
 
 	    this.sortByName = function() {
