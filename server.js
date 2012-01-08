@@ -28,18 +28,11 @@ app.get('/:name/__log', function(req, res, next){
 	var name = req.params.name;
 	res.send(name);
 
-	//try {
-		logger.printData(name, url.parse(req.url, true));
-	//}
-	//catch(err) { console.log(err, 'error'); }
+	logger.printData(name, url.parse(req.url, true));
 });
 
 
 app.get('/:name', function(req, res){
-	setTimeout(function() {
-		//console.log(logger);
-	}, 1000);
-	//logger.log(req.params);
 	var name = req.params.name || 'unknown';
 
 	res.send(homepage.replace('{{{{name}}}}', name));
