@@ -23,7 +23,7 @@
 <body>
 <div id="test"></div>
 <script>
-	
+
 	var now = nowInitialize();
 	now.name = name;
 	now.receiveLog = function (msg, data) { console.log(data, msg); }
@@ -37,24 +37,12 @@
 		}
 	});
 
-	var initialData = [
-	    { name: "Well-Travelled Kitten", time: '1. 12. 12:30:00', IP: '192.168.0.1', message: 'order created', extData: {a: 23, b: 12} },
-	    { name: "Well-Travelled Kitten", time: '1. 12. 12:30:00', IP: '192.168.0.1', message: 'order created', extData: {a: 23, b: 12} },
-	    { name: "Well-Travelled Kitten", time: '1. 12. 12:30:00', IP: '192.168.0.1', message: 'order created', extData: {a: 23, b: 12} },
-	    { name: "Well-Travelled Kitten", time: '1. 12. 12:30:00', IP: '192.168.0.1', message: 'order created', extData: {a: 23, b: 12} },
-	];
 
 	var PagedGridModel = function(items) {
 	    this.items = ko.observableArray(items);
 
 	    this.addItem = function(newItem) {
 	        this.items.unshift(newItem);
-	    };
-
-	    this.sortByName = function() {
-	        this.items.sort(function(a, b) {
-	            return a.name < b.name ? -1 : 1;
-	        });
 	    };
 
 	    this.jumpToFirstPage = function() {
@@ -66,7 +54,7 @@
 	    this.gridViewModel = new ko.simpleGrid.viewModel({
 	        data: this.items,
 	        columns: [
-	            { headerText: "Kind", rowText: "name" },
+	            { headerText: "Group", rowText: "name" },
 	            { headerText: "Time", rowText: "time" },
 	            { headerText: "IP", rowText: 'IP' },
 	            { headerText: "Mesage", rowText: "message" },
@@ -75,7 +63,7 @@
 	        pageSize: 8
 	    });
 	};
-	var pageGridModel = new PagedGridModel(initialData);
+	var pageGridModel = new PagedGridModel();
 	$(function() {
 	    ko.applyBindings(pageGridModel);
 	});
