@@ -42,6 +42,9 @@ body
     border-collapse: collapse;
     text-align: left;
 }
+#hor-minimalist-b table {
+	width: 700px;
+}
 #hor-minimalist-b th
 {
     font-size: 14px;
