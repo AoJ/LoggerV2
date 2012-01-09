@@ -23,7 +23,7 @@ logger.prototype = {
 		//@TODO refactor
 		var that = this;
 		nowjs.on('connect', function() {
-			var name = this.now.name || 'unknown'
+			var name = this.now.name || 'everyone'
 			,	group = that.getGroup(name)
 			,	clientId = this.user.clientId;
 
