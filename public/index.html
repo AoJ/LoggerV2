@@ -21,7 +21,6 @@
 	</style>
 </head>
 <body>
-<div id="test"></div>
 <script>
 
 	var now = nowInitialize();
@@ -78,20 +77,6 @@
 	}
 
 </script>
-</body>
-<div id="tasks-container">
-	<div class="task">
-		<div class="checkbox"></div>
-		<a href="#" class="remove" title="Remove Task"></a>
-
-		<div class="title"><input type="text" value="<%= task.get('name') %>"/></div>
-		<div class="revision">_rev: <%= task._rev ? task._rev : "" %> <%= task._dirty ? '<span
-				class="tag">pending</span>' : '' %>
-		</div>
-	</div>
-
-</div>
-</div>
 
 <div id="hor-minimalist-b" data-bind='simpleGrid: gridViewModel'></div>
 
@@ -99,4 +84,5 @@
 <button data-bind='click: jumpToFirstPage, enable: gridViewModel.currentPageIndex'>
 	Jump to first page
 </button>
+</body>
 </html>
