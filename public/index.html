@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 	<meta http-equiv="content-type" content="text/html;charset=utf-8">
@@ -79,19 +79,6 @@
 
 </script>
 </body>
-<div id="tasks-container">
-	<div class="task">
-		<div class="checkbox"></div>
-		<a href="#" class="remove" title="Remove Task"></a>
-
-		<div class="title"><input type="text" value="<%= task.get('name') %>"/></div>
-		<div class="revision">_rev: <%= task._rev ? task._rev : "" %> <%= task._dirty ? '<span
-				class="tag">pending</span>' : '' %>
-		</div>
-	</div>
-
-</div>
-</div>
 
 <div id="hor-minimalist-b" data-bind='simpleGrid: gridViewModel'></div>
 
