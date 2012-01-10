@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
 	<meta http-equiv="content-type" content="text/html;charset=utf-8">
@@ -59,7 +59,8 @@
 	            { headerText: "Time", rowText: "time" },
 	            { headerText: "IP", rowText: 'IP' },
 	            { headerText: "Mesage", rowText: "message" },
-	            { headerText: "More data", rowText: function (item) { return JSON.stringify(item.extData); } }
+	            { headerText: "More data", rowText: function (item) { return JSON.stringify(item.extData); } },
+	            { headerText: "", rowText: function (item) { return $('<img src="/images/detail.png" />').html(); } }
 	        ],
 	        pageSize: 8
 	    });
