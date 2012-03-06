@@ -10,4 +10,5 @@
 .~lock.*
 .bcup
 .idea
+.idea/
 *.pyc

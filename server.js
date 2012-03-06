@@ -4,6 +4,10 @@ var
 ,	fs = require('fs')
 ,	nowjs = require('now')
 ,	url  = require('url')
+,	nano = require('nano')
+;
+
+global.config = fs.readFileSync(__dirname+ '/config.json', 'utf-8');
 
 
 var app = express.createServer();
