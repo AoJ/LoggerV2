@@ -4,13 +4,24 @@ body
 	background-image: url(/images/diagonal-noise.png);
 }
 
+.alpha60 {
+	/* Fallback for web browsers that doesn't support RGBa */
+	background: rgb(0, 0, 0);
+	/* RGBa with 0.6 opacity */
+	background: rgba(0, 0, 0, 0.6);
+	/* For IE 5.5 - 7*/
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
+	/* For IE 8*/
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
+}
+
 #hor-minimalist-a
 {
     font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
     font-size: 12px;
     background: #fff;
     margin: 45px;
-    width: 700px;
+    width: 90%;
     border-collapse: collapse;
     text-align: left;
 }
@@ -37,13 +48,15 @@ body
 {
     font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
     font-size: 12px;
-    margin: 45px;
-    width: 700px;
+    padding: 0;
+    margin: 0;
+    width: 100%;
     border-collapse: collapse;
     text-align: left;
+	float: left;
 }
 #hor-minimalist-b table {
-	width: 700px;
+	width: 100%;
 }
 #hor-minimalist-b th
 {
@@ -62,4 +75,11 @@ body
 #hor-minimalist-b tbody tr:hover td
 {
     color: #009;
+}
+#hor-minimalist-b .ko-grid-pageLinks .selected
+{
+    font-weight: bold;
+}
+#graph {
+	float: right;
 }

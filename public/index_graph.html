@@ -1,0 +1,248 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8">
+	<title></title>
+
+	<script src="/javascripts/underscore.js"></script>
+	<script src="//cloud.github.com/downloads/SteveSanderson/knockout/knockout-2.0.0.debug.js"></script>
+	<script src="//knockoutjs.com/examples/resources/knockout.simpleGrid.1.3.js"></script>
+
+	<script src="/javascripts/now.js"></script>
+	<script src="/javascripts/data.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.js"></script>
+	<script>
+		var name = '{{{{name}}}}';
+	</script>
+
+	<style type="text/css">
+		@import url("/stylesheets/reset.css");
+		@import url("/stylesheets/application.css");
+	</style>
+</head>
+<body>
+<script>
+
+	var now = nowInitialize();
+	now.name = name;
+	var timeLineData;
+	//now.receiveLog = function (msg, data) { console.log(data, msg); }
+
+
+	var data = new Data.Collection({
+		"properties":{
+			"a":{"name":"Country Name", "type":"string", "unique":false },
+			"b":{"name":"Official Language", "type":"string", "unique":false },
+			"c":{ "name":"Population", "type":"string", "unique":false }
+		}
+	});
+
+	var initialData = [
+	    { name: "Well-Travelled Kitten", time: '1. 12. 12:30:00', IP: '192.168.0.1', message: 'order created', extData: {a: 23, b: 12} }
+	];
+
+	var counter = {
+		'all': 0,
+		'order': 0,
+		'complete': 0,
+	};
+	var tim;
+	setInterval(function(){
+		if(timeLineData) {
+			timeLineData[0].addPoint([(new Date()).getTime(), counter.all], true, true);
+			timeLineData[1].addPoint([(new Date()).getTime(), counter.order], true, true);
+			timeLineData[2].addPoint([(new Date()).getTime(), counter.complete], true, true);
+			counter = {
+				'all': 0,
+				'order': 0,
+				'complete': 0,
+			};
+		}
+	}, 5000);
+	var PagedGridModel = function(items) {
+	    this.items = ko.observableArray(items || []);
+	    this.log = ko.observableArray([]);
+		this.arrayLimit = 150;
+
+	    this.addItem = function(newItem) {
+	        this.items.unshift(newItem);
+			this.compactStore(this.items);
+			counter.all++;
+			if(newItem.criteria) {
+				if(newItem.criteria.indexOf('order') >= 0) counter.order++;
+				if(newItem.criteria.indexOf('complete') >= 0) counter.complete++;
+			}
+	    };
+
+	    this.addLog = function(newLog) {
+	        this.log.unshift(newLog);
+	    };
+
+		this.compactStore = function(store) {
+			while(store().length > this.arrayLimit) {
+				store.pop();
+			}
+		};
+
+	    this.jumpToFirstPage = function() {
+	        this.gridViewModel.currentPageIndex(0);
+	    };
+
+
+	    this.gridViewModel = new ko.simpleGrid.viewModel({
+	        data: this.items,
+	        columns: [
+	            { headerText: "Group", rowText: "group" },
+	            { headerText: "Project", rowText: "project" },
+	            { headerText: "Time", rowText: function(item) { return new Date(item.time).toUTCString(); } },
+	            { headerText: "Duration", rowText: "duration" },
+	            { headerText: "Mesage", rowText: "message" },
+	            { headerText: "Data", rowText: "data" },
+	            { headerText: "More data", rowText: function (item) { return JSON.stringify(item.criteria); } },
+	            { headerText: "", rowText: function (item) { return ''; } }
+	        ],
+	        pageSize: 8
+	    });
+
+	    this.gridLogModel = new ko.simpleGrid.viewModel({
+	        data: this.log,
+	        columns: [
+	            { headerText: "Seq", rowText: "seq" },
+	            { headerText: "Id", rowText: "id" }
+	        ],
+	        pageSize: 8
+	    });
+	};
+	var pageGridModel = new PagedGridModel();
+	$(function() {
+	    ko.applyBindings(pageGridModel);
+	});
+
+
+	now.newData = function (message) {
+		pageGridModel.addItem(message);
+		//data.set(undefined, message);
+	}
+
+	now.log = function (message) {
+		pageGridModel.addLog(message);
+		//data.set(undefined, message);
+	}
+
+
+	$(document).ready(function() {
+	    Highcharts.setOptions({
+	        global: {
+	            useUTC: false
+	        }
+	    });
+
+	    var chart;
+	    chart = new Highcharts.Chart({
+	        chart: {
+	            renderTo: 'graph',
+	            type: 'spline',
+	            marginRight: 10,
+	            events: {
+	                load: function() {
+
+	                    // set up the updating of the chart each second
+	                    var series = this.series;
+						timeLineData = series;
+	                }
+	            }
+	        },
+
+	        title: {
+	            text: 'Live data'
+	        },
+	        xAxis: {
+	            type: 'datetime',
+	            tickPixelInterval: 500
+	        },
+	        yAxis: {
+	            title: {
+	                text: 'Počet návštěv za 5s'
+	            },
+	            plotLines: [{
+	                value: 0,
+	                width: 1,
+	                color: '#808080'
+	            }]
+	        },
+	        _tooltip: {
+	            formatter: function() {
+	                    return '<b>'+ this.series.name +'</b><br/>'+
+	                    Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) +'<br/>'+
+	                    Highcharts.numberFormat(this.y, 2);
+	            }
+	        },
+	        legend: {
+	            enabled: true
+	        },
+	        exporting: {
+	            enabled: true
+	        },
+	        series: [{
+	            name: 'All pages',
+	            data: (function() {
+	                // generate an array of random data
+	                var data = [],
+	                    time = (new Date()).getTime(),
+	                    i;
+					for (i = -49; i <= 0; i++) {
+				                    data.push({
+				                        x: time + i * 1000,
+				                        y: 0
+				                    });
+				                }
+	                return data;
+	            })()
+	        },{
+	            name: 'Order start',
+	            data: (function() {
+	                // generate an array of random data
+	                var data = [],
+	                    time = (new Date()).getTime(),
+	                    i;
+					for (i = -49; i <= 0; i++) {
+				                    data.push({
+				                        x: time + i * 1000,
+				                        y: 0
+				                    });
+				                }
+	                return data;
+	            })()
+	        },{
+	            name: 'Order complete',
+	            data: (function() {
+	                // generate an array of random data
+	                var data = [],
+	                    time = (new Date()).getTime(),
+	                    i;
+					for (i = -49; i <= 0; i++) {
+				                    data.push({
+				                        x: time + i * 1000,
+				                        y: 0
+				                    });
+				                }
+	                return data;
+	            })()
+	        }]
+	    });
+	});
+</script>
+
+<label>Rows limit: </label><input data-bind="value: arrayLimit"><br />
+<div id="hor-minimalist-b" data-bind='simpleGrid: gridViewModel'></div>
+
+<script src="http://code.highcharts.com/stock/highstock.js"></script><script src="http://code.highcharts.com/stock/modules/exporting.js"></script>
+
+<div id="graph" style="min-width: 400px; width: 400px; height: 400px; margin: 0 auto"></div>
+​
+
+<button data-bind='click: jumpToFirstPage, enable: gridViewModel.currentPageIndex'>
+	Jump to first page
+</button>
+</body>
+</html>

@@ -1,10 +1,17 @@
 {
-	"couchdb_url":"http://hegenbart:aXJT5zLcGZ@81.169.133.153:5984/",
+	"couchdb_url":"http://d.n13.cz:9090",
 	"server_host":null,
 	"server_port":3003,
-	"secret":"Dneska je ale krásně",
-
-	"db": {
-		"logger": "logger"
+	"secret":"Dneska je ale krásný den",
+	"db":{
+		"logger": "logger",
+		"n13": {
+			"url": "http://c.n13.cz:9090",
+			"db": "zapa"
+		},
+		"zapa": {
+			"url": "http://zapakatel:nd3opsRlWm@m142-sql.server4u.cz:5984",
+			"db": "zapakatel"
+		}
 	}
 }

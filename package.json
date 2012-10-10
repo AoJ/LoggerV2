@@ -1,0 +1,41 @@
+{
+  "name": "LoggerV2",
+  "description": "Logger",
+  "homepage": "http://logger.n13.cz",
+  "keywords": [
+    "n13",
+    "logger"
+  ],
+  "author": "Tomas Hegenbart <hegenbart@n13.cz>",
+  "repository": {
+    "type": "git",
+    "url": "ssh+git://git@github.com:AoJ/LoggerV2.git"
+  },
+  "main": "server.js",
+  "version": "2.0.0",
+  "contributors": [
+    "Tomas Hegenbart <hegenbart@n13.cz>"
+  ],
+  "dependencies": {
+    "express": "2.5.x",
+    "moment": "1.4.0",
+    "underscore": "1.3.x",
+    "nano": "1.3.x",
+    "now": "0.x.x",
+    "data": "0.4.x",
+    "cli": "0.4.x",
+    "request": "2.9.x",
+    "xml2js": "*"
+  },
+  "engine": {
+    "node": ">=0.6"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "devDependencies": {},
+  "optionalDependencies": {},
+  "engines": {
+    "node": "*"
+  }
+}

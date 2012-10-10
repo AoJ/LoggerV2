@@ -1,0 +1,48 @@
+{
+	"/type/deal":{
+		"_id":"/type/deal",
+		"type":"/type/type",
+		"name":"Deal",
+		"properties":{
+			"deal_id":{
+				"name":"Deal ID",
+				"unique":false,
+				"type":"string",
+				"required":true
+			},
+			"lang":{
+				"name":"Language",
+				"type":"string",
+				"required":true
+			},
+			"indexes":{
+				"deal":["deal_id", "lang"]
+			}
+		}
+	},
+
+	"/type/deal_sets":{
+		"_id":"/type/deal sets",
+		"type":"/type/type",
+		"name":"Deal Sets",
+		"properties":{
+			"name":{
+				"name":"Set Name",
+				"required":true
+			},
+			"ids":{
+				"name":"Deal IDS",
+				"type":"array",
+				"required":true
+			},
+			"location_id":{
+				"name":"Location",
+				"type":"string",
+				"required":true
+			}
+		},
+		"indexes":{
+			"deal_sets":["name", "location_id"]
+		}
+	}
+}

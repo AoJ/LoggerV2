@@ -12,3 +12,5 @@
 .idea
 .idea/
 *.pyc
+.nide
+node_modules/

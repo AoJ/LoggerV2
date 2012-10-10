@@ -4,13 +4,16 @@
 	<meta http-equiv="content-type" content="text/html;charset=utf-8">
 	<title></title>
 
+	<script src="/javascripts/jquery.js"></script>
 	<script src="/javascripts/underscore.js"></script>
-	<script src="//cloud.github.com/downloads/SteveSanderson/knockout/knockout-2.0.0.debug.js"></script>
-	<script src="//knockoutjs.com/examples/resources/knockout.simpleGrid.1.3.js"></script>
-
 	<script src="/javascripts/now.js"></script>
+	<script src="/javascripts/knockoutjs.js"></script>
+	<script src="/javascripts/knockout.simpleGrid.1.3.js"></script>
+	<script src="/javascripts/inspect.jquery.js"></script>
 	<script src="/javascripts/data.js"></script>
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.js"></script>
+	<script src="/javascripts/uikit.js"></script>
+	<script src="/javascripts/moment.js"></script>
+
 	<script>
 		var name = '{{{{name}}}}';
 	</script>
@@ -18,14 +21,36 @@
 	<style type="text/css">
 		@import url("/stylesheets/reset.css");
 		@import url("/stylesheets/application.css");
+		@import url("/stylesheets/uikit.css");
+		@import url("/stylesheets/inspect.css");
 	</style>
 </head>
 <body>
 <script>
 
+	var showWindow = function(data, key) {
+		var content;
+		try {
+			if(data[key][0] === '"') {
+				var parsed = JSON.parse(JSON.parse(data[key]));
+			} else {
+				var parsed = JSON.parse(data[key]);
+			}
+
+			//console.log(data[key]);
+			//console.log(parsed, 'parsed');
+			content = jQuery('<span />').inspect(parsed);
+		} catch(e) { }
+		ui.dialog(key, content || data[key])
+	        .closable()
+			.overlay()
+	        .show();
+	};
+
 	var now = nowInitialize();
 	now.name = name;
-	now.receiveLog = function (msg, data) { console.log(data, msg); }
+	var timeLineData;
+	//now.receiveLog = function (msg, data) { console.log(data, msg); }
 
 
 	var data = new Data.Collection({
@@ -37,53 +62,131 @@
 	});
 
 	var initialData = [
-	    { name: "Well-Travelled Kitten", time: '1. 12. 12:30:00', IP: '192.168.0.1', message: 'order created', extData: {a: 23, b: 12} }
+		{ name:"Well-Travelled Kitten", time:'1. 12. 12:30:00', IP:'192.168.0.1', message:'order created', extData:{a:23, b:12} }
 	];
 
-	var PagedGridModel = function(items) {
-	    this.items = ko.observableArray(items || []);
+	var sum = function(arrayOfInt) {
+		return _.reduce(arrayOfInt, function(memo, num){ return memo + parseInt(num ,10); }, 0);
+	};
 
-	    this.addItem = function(newItem) {
-	        this.items.unshift(newItem);
-	    };
+	var counter = {
+		'all':0,
+		'order':0,
+		'complete':0
+	};
+	var tim;
+	setInterval(function () {
+		if (timeLineData) {
+			timeLineData[0].addPoint([(new Date()).getTime(), counter.all], true, true);
+			timeLineData[1].addPoint([(new Date()).getTime(), counter.order], true, true);
+			timeLineData[2].addPoint([(new Date()).getTime(), counter.complete], true, true);
+		}
+		counter = {
+			'all':0,
+			'order':0,
+			'complete':0
+		};
 
-	    this.jumpToFirstPage = function() {
-	        this.gridViewModel.currentPageIndex(0);
-	    };
+	}, 5000);
+	var PagedGridModel = function (items) {
+		this.items = ko.observableArray(items || []);
+		this.perPage = ko.observable(20);
+		this.log = ko.observableArray([]);
+		this.arrayLimit = 1500;
+		this.stopped = ko.observable(false);
+		this.stopCache = [];
+		this.avgDuration = ko.observable(false);
+		this.count5s = ko.observable(0);
+		var count5s = this.count5s;
+		setInterval(_.bind(function() { count5s(this.all) }, counter), 5000);
+
+		this.addItem = function (newItem) {
+			this.items.unshift(newItem);
+			this.compactStore(this.items);
+			counter.all++;
+			if (newItem.criteria) {
+				if (newItem.criteria.indexOf('order') >= 0) counter.order++;
+				if (newItem.criteria.indexOf('complete') >= 0) counter.complete++;
+			}
+			this.avgDuration(sum(_.pluck(this.items.slice(0, this.perPage()), 'duration')) / this.perPage());
+		};
+
+		this.addLog = function (newLog) {
+			this.log.unshift(newLog);
+		};
+
+		this.inspector = function() {
+			//console.log(arguments);
+		};
+
+		this.compactStore = function (store) {
+			while (store().length > this.arrayLimit) {
+				store.pop();
+			}
+		};
+
+		this.jumpToFirstPage = function () {
+			this.gridViewModel.currentPageIndex(0);
+		};
+
+		this.createClickHandle = function(key) {
+			return function(item) { showWindow(item, key); };
+		};
+
+		this.formatRowData = function(key) {
+			return function(data) {
+				if(typeof data[key] == 'undefined') data[key] = '';
+				if(typeof data[key] == 'object') data[key] = JSON.stringify(data[key]);
+				var sliced = (""+data[key]).slice(0, 30);
+				if(sliced.length < data[key].length) sliced = sliced + '…';
+				return sliced;
+			}
+		};
 
 
-	    this.gridViewModel = new ko.simpleGrid.viewModel({
-	        data: this.items,
-	        columns: [
-	            { headerText: "Group", rowText: "name" },
-	            { headerText: "Time", rowText: "time" },
-	            { headerText: "IP", rowText: 'IP' },
-	            { headerText: "Mesage", rowText: "message" },
-	            { headerText: "More data", rowText: function (item) { return JSON.stringify(item.extData); } },
-	            { headerText: "", rowText: function (item) { return '<img src="/images/detail.png" />'; } }
-	        ],
-	        pageSize: 8
-	    });
+		this.gridViewModel = new ko.simpleGrid.viewModel({
+			data:this.items,
+			columns:[
+				{ headerText:"Group", rowText:"group", rowClick: this.createClickHandle('group') },
+				{ headerText:"Project", rowText:"project", rowClick: this.createClickHandle('project') },
+				{ headerText:"Time", rowText:function (item) { return moment(item.time).format('DD.MM. H:mm:ss'); }, rowClick: this.createClickHandle('time') },
+				{ headerText:"Duration", rowText:"duration", rowClick: this.createClickHandle('duration') },
+				{ headerText:"IP", rowText:'ip', rowClick: this.createClickHandle('ip') },
+				{ headerText:"Mesage", rowText:this.formatRowData('message'), rowClick: this.createClickHandle('message') },
+				{ headerText:"Data", rowText: this.formatRowData('data'), rowClick: this.createClickHandle('data') },
+				{ headerText:"", rowText: this.formatRowData('ext'), rowClick: this.createClickHandle('ext') },
+				{ headerText:"Type", rowText:this.formatRowData("criteria"), rowClick: this.createClickHandle('criteria') }
+			],
+			pageSize:this.perPage()
+		});
 	};
 	var pageGridModel = new PagedGridModel();
-	$(function() {
-	    ko.applyBindings(pageGridModel);
+	$(function () {
+		ko.applyBindings(pageGridModel);
 	});
 
 
 	now.newData = function (message) {
-		console.log(message);
 		pageGridModel.addItem(message);
 		//data.set(undefined, message);
 	}
 
+	now.log = function (message) {
+		pageGridModel.addLog(message);
+		//data.set(undefined, message);
+	}
+
+
 </script>
 
-<div id="hor-minimalist-b" data-bind='simpleGrid: gridViewModel'></div>
+<label>Rows limit: </label><input data-bind="value: arrayLimit">
 
+<div id="hor-minimalist-b" data-bind='simpleGrid: gridViewModel'></div>
+​
 
 <button data-bind='click: jumpToFirstPage, enable: gridViewModel.currentPageIndex'>
 	Jump to first page
 </button>
+<span style="width: 70px;display: inline-block;">Ø <span data-bind="text: avgDuration"></span></span>, záznamů za minulých 5s: <strong data-bind="text: count5s"></strong>
 </body>
 </html>

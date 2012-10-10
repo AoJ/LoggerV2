@@ -1,28 +1,31 @@
 {
-	"/logger/print":{
-		"_id":"/logger/print",
-		"type":"type",
+	"/type/access":{
+		"_id":"/type/access",
+		"type":"/type/type",
 		"name":"Print",
 		"properties":{
 			"time":{ "name":"Time", "type":"string" },
-			"user":{ "name":"User", "type":["/logger/user"] },
+			"duration":{ "name":"Duration", "type":"number" },
+			"user":{ "name":"User", "type":["/type/user"] },
 			"project":{ "name":"Project", "type":"string" },
 			"ip":{ "name":"IP", "unique":false, "type":"string" },
 			"message":{ "name":"Message", "type":"string" },
 			"data":{ "name":"Data", "type":"mixed" },
+			"criteria":{ "name":"Criteria", "type":"array" },
 			"ext": { "name":"Extension data", "type":"object" }
 		},
 		"indexes":{
 			"key":["time", "user", "project"],
 			"time": ["time"],
 			"user": ["user"],
+			"criteria": ["project", "criteria"],
 			"project": ["project"]
 		}
 	},
 
-	"/logger/access":{
-		"_id":"/logger/access",
-		"type":"type",
+	"/type/access_old":{
+		"_id":"/type/access",
+		"type":"/type/type",
 		"name":"access",
 		"properties":{
 
@@ -69,9 +72,9 @@
 		}
 	},
 
-	"/logger/user":{
-		"_id":"/logger/user",
-		"type":"type",
+	"/type/user":{
+		"_id":"/type/user",
+		"type":"/type/type",
 		"name":"User",
 		"properties":{
 			"name":{

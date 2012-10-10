@@ -40,11 +40,20 @@ logger.prototype = {
 	 * @param params
 	 */
 	printData: function(name, params) {
-		var data = params.query || {};
+		var data = params || {};
 
 		var now = new Date();
 		data.time = '' + now.toUTCString();// format('yyyy-mm-dd HH:MM:ss');
 		this.getGroup(name).now.distribute(data);
+	},
+
+	/**
+	 * send some data to group
+	 * @param name
+	 * @param params
+	 */
+	couchLog: function(name, data) {
+		this.getGroup(name).now.distributeLog(data);
 	},
 
 	/**
@@ -80,6 +89,9 @@ logger.prototype = {
 		this.trace('new group', [name, group]);
 		group.now.distribute = function(data) {
 			this.now.newData(data);
+		}
+		group.now.distributeLog = function(data) {
+			this.now.log(data);
 		}
 		return group;
 	},
